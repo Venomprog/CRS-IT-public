@@ -1,0 +1,205 @@
+
+<!--Для добавления мобильной версии картинки добавляем вторым параметром true-->
+<!--Например +picture('image.jpg', 'true')-->
+<!--Миксин будет искать картинку с названием image-mob.jpg (тоесть вторая картинка должна иметь такое же название как и основная, только с добавлением -mob.png/jpg и тд)--><!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <title>Index</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta content="ie=edge" http-equiv="x-ua-compatible">
+    <link href="https://vitejs.dev/logo.svg" rel="icon" type="image/x-icon">
+    <script type="module" crossorigin src="assets/index-834c61d1.js"></script>
+    <link rel="stylesheet" href="styles/index.css">
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="modal-block">
+      </div>
+      <header class="header">
+        <div class="header-inner"> 
+          <div class="header-logo"> <a class="header-logo__logo" href="#">
+              <svg width="100" height="44" viewbox="0 0 100 44" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <rect y="0.45752" width="100" height="43.0851" fill="url(#pattern0)"></rect>
+                <defs>
+                  <pattern id="pattern0" patterncontentunits="objectBoundingBox" width="1" height="1">
+                    <use xlink:href="#image0_4001_637" transform="matrix(0.00463281 0 0 0.0107527 -0.000343121 0)"></use>
+                  </pattern>
+                  <image id="image0_4001_637" width="216" height="93" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANgAAABdCAYAAADHXaiGAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAABARpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQ1IDc5LjE2MzQ5OSwgMjAxOC8wOC8xMy0xNjo0MDoyMiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSJ1dWlkOjlFM0U1QzlBOEM4MURCMTE4NzM0REI1OEZEREU0QkE3IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjlCNThEMDRCODhDMjExRUNCRjc1OUMwNDQyNjc2NkYxIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjlCNThEMDRBODhDMjExRUNCRjc1OUMwNDQyNjc2NkYxIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIElsbHVzdHJhdG9yIENDIDIwMTcgKFdpbmRvd3MpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6ZmRkNmY2ZTctMTdmMS00ZTQ3LWE1NDctMzMyOWRmMjNlNTk1IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlk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"></image>
+                </defs>
+              </svg></a></div>
+          <nav class="header-nav"> 
+            <div class="header-nav__link header-nav__accord">
+              <div class="header-nav__accord-top"> 
+                <p class="header-nav__accord-title">Каталог</p>
+                <div class="header-nav__accord-arrow">
+                  <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 9L12 15L18 9" stroke="#161616" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </div>
+              <div class="header-nav__accord-dropdown header-nav__dropdown"> 
+                <div class="header-nav__dropdown-list"><a class="header-nav__dropdown-item" href="#"> 
+                    <div class="header-nav__dropdown-img"> 
+                      <picture class="picture">
+                        <source class="lazyload" type="image/webp" srcset="webp/header-catalog-img1.webp 1x" alt="header-catalog-img1.png"/>
+                        <source class="lazyload" srcset="images/header-catalog-img1.jpg 1x" alt="header-catalog-img1.png"/>
+                        <source class="lazyload" srcset="images/header-catalog-img1.png 1x" alt="header-catalog-img1.png"/><img class="picture__img lazyload" data-src="images/header-catalog-img1.png" alt="header-catalog-img1.png"/>
+                      </picture>
+                    </div>
+                    <p class="header-nav__dropdown-title">Дисплеи</p></a><a class="header-nav__dropdown-item" href="#"> 
+                    <div class="header-nav__dropdown-img"> 
+                      <picture class="picture">
+                        <source class="lazyload" type="image/webp" srcset="webp/header-catalog-img1.webp 1x" alt="header-catalog-img1.png"/>
+                        <source class="lazyload" srcset="images/header-catalog-img1.jpg 1x" alt="header-catalog-img1.png"/>
+                        <source class="lazyload" srcset="images/header-catalog-img1.png 1x" alt="header-catalog-img1.png"/><img class="picture__img lazyload" data-src="images/header-catalog-img1.png" alt="header-catalog-img1.png"/>
+                      </picture>
+                    </div>
+                    <p class="header-nav__dropdown-title">Система ВКС</p></a><a class="header-nav__dropdown-item" href="#"> 
+                    <div class="header-nav__dropdown-img"> 
+                      <picture class="picture">
+                        <source class="lazyload" type="image/webp" srcset="webp/header-catalog-img1.webp 1x" alt="header-catalog-img1.png"/>
+                        <source class="lazyload" srcset="images/header-catalog-img1.jpg 1x" alt="header-catalog-img1.png"/>
+                        <source class="lazyload" srcset="images/header-catalog-img1.png 1x" alt="header-catalog-img1.png"/><img class="picture__img lazyload" data-src="images/header-catalog-img1.png" alt="header-catalog-img1.png"/>
+                      </picture>
+                    </div>
+                    <p class="header-nav__dropdown-title">Система КС</p></a><a class="header-nav__dropdown-item" href="#"> 
+                    <div class="header-nav__dropdown-img"> 
+                      <picture class="picture">
+                        <source class="lazyload" type="image/webp" srcset="webp/header-catalog-img1.webp 1x" alt="header-catalog-img1.png"/>
+                        <source class="lazyload" srcset="images/header-catalog-img1.jpg 1x" alt="header-catalog-img1.png"/>
+                        <source class="lazyload" srcset="images/header-catalog-img1.png 1x" alt="header-catalog-img1.png"/><img class="picture__img lazyload" data-src="images/header-catalog-img1.png" alt="header-catalog-img1.png"/>
+                      </picture>
+                    </div>
+                    <p class="header-nav__dropdown-title">Кабельная продукция</p></a><a class="header-nav__dropdown-item" href="#"> 
+                    <div class="header-nav__dropdown-img"> 
+                      <picture class="picture">
+                        <source class="lazyload" type="image/webp" srcset="webp/header-catalog-img1.webp 1x" alt="header-catalog-img1.png"/>
+                        <source class="lazyload" srcset="images/header-catalog-img1.jpg 1x" alt="header-catalog-img1.png"/>
+                        <source class="lazyload" srcset="images/header-catalog-img1.png 1x" alt="header-catalog-img1.png"/><img class="picture__img lazyload" data-src="images/header-catalog-img1.png" alt="header-catalog-img1.png"/>
+                      </picture>
+                    </div>
+                    <p class="header-nav__dropdown-title">Крепления</p></a><a class="header-nav__dropdown-item" href="#"> 
+                    <div class="header-nav__dropdown-img"> 
+                      <picture class="picture">
+                        <source class="lazyload" type="image/webp" srcset="webp/header-catalog-img1.webp 1x" alt="header-catalog-img1.png"/>
+                        <source class="lazyload" srcset="images/header-catalog-img1.jpg 1x" alt="header-catalog-img1.png"/>
+                        <source class="lazyload" srcset="images/header-catalog-img1.png 1x" alt="header-catalog-img1.png"/><img class="picture__img lazyload" data-src="images/header-catalog-img1.png" alt="header-catalog-img1.png"/>
+                      </picture>
+                    </div>
+                    <p class="header-nav__dropdown-title">Проекторы</p></a><a class="header-nav__dropdown-item" href="#"> 
+                    <div class="header-nav__dropdown-img"> 
+                      <picture class="picture">
+                        <source class="lazyload" type="image/webp" srcset="webp/header-catalog-img1.webp 1x" alt="header-catalog-img1.png"/>
+                        <source class="lazyload" srcset="images/header-catalog-img1.jpg 1x" alt="header-catalog-img1.png"/>
+                        <source class="lazyload" srcset="images/header-catalog-img1.png 1x" alt="header-catalog-img1.png"/><img class="picture__img lazyload" data-src="images/header-catalog-img1.png" alt="header-catalog-img1.png"/>
+                      </picture>
+                    </div>
+                    <p class="header-nav__dropdown-title">Конфигураторы</p></a></div>
+              </div>
+            </div><a class="header-nav__link">О нас</a><a class="header-nav__link">Услуги</a><a class="header-nav__link">Партнёрам</a><a class="header-nav__link">Контакты</a>
+          </nav>
+          <div class="header-cart">
+            <div class="header-cart__cart"> 
+              <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20.0001 21.25C20.5524 21.25 21.0001 20.8023 21.0001 20.25C21.0001 19.6977 20.5524 19.25 20.0001 19.25C19.4478 19.25 19.0001 19.6977 19.0001 20.25C19.0001 20.8023 19.4478 21.25 20.0001 21.25Z" fill="#454545" stroke="#454545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M8.99988 21.25C9.55216 21.25 9.99988 20.8023 9.99988 20.25C9.99988 19.6977 9.55216 19.25 8.99988 19.25C8.44759 19.25 7.99988 19.6977 7.99988 20.25C7.99988 20.8023 8.44759 21.25 8.99988 21.25Z" fill="#454545" stroke="#454545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M1.5 2.25H4.5L7.68012 14.39C7.77157 14.8504 8.02203 15.2639 8.38767 15.5583C8.75331 15.8526 9.21082 16.009 9.68012 16H19.4001C19.8694 16.009 20.3269 15.8526 20.6926 15.5583C21.0582 15.2639 21.3087 14.8504 21.4001 14.39L22.5 5.99999H6.00012" stroke="#454545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </div>
+            <div class="header-cart__burger"> 
+              <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 18L21 18" stroke="#454545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M3 12H21" stroke="#454545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M3 6H21" stroke="#454545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </div><a class="header-cart__tel" href="tel:+74951981492"> 
+              <div class="header-cart__tel-icon"> 
+                <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M22 16.9201V19.9201C22.0011 20.1986 21.9441 20.4743 21.8325 20.7294C21.7209 20.9846 21.5573 21.2137 21.3521 21.402C21.1468 21.5902 20.9046 21.7336 20.6407 21.8228C20.3769 21.912 20.0974 21.9452 19.82 21.9201C16.7428 21.5857 13.787 20.5342 11.19 18.8501C8.77382 17.3148 6.72533 15.2663 5.18999 12.8501C3.49997 10.2413 2.44824 7.27109 2.11999 4.1801C2.095 3.90356 2.12787 3.62486 2.21649 3.36172C2.30512 3.09859 2.44756 2.85679 2.63476 2.65172C2.82196 2.44665 3.0498 2.28281 3.30379 2.17062C3.55777 2.05843 3.83233 2.00036 4.10999 2.0001H7.10999C7.5953 1.99532 8.06579 2.16718 8.43376 2.48363C8.80173 2.80008 9.04207 3.23954 9.10999 3.7201C9.23662 4.68016 9.47144 5.62282 9.80999 6.5301C9.94454 6.88802 9.97366 7.27701 9.8939 7.65098C9.81415 8.02494 9.62886 8.36821 9.35999 8.6401L8.08999 9.9101C9.51355 12.4136 11.5864 14.4865 14.09 15.9101L15.36 14.6401C15.6319 14.3712 15.9751 14.1859 16.3491 14.1062C16.7231 14.0264 17.1121 14.0556 17.47 14.1901C18.3773 14.5286 19.3199 14.7635 20.28 14.8901C20.7658 14.9586 21.2094 15.2033 21.5265 15.5776C21.8437 15.9519 22.0122 16.4297 22 16.9201Z" stroke="#454545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </div>
+              <div class="header-cart__tel-number">+7 (495)-198-14-92</div></a>
+            <div class="header-cart__btn"> 
+              <button class="button button-primary _small orange-100">Заказать звонок</button>
+            </div>
+          </div>
+        </div>
+      </header>
+      <main></main>
+      <div class="footer">
+        <div class="footer-inner"> 
+          <div class="footer-about"> 
+            <div class="footer-about__logo"> 
+              <svg width="200" height="87" viewbox="0 0 200 87" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <rect width="200" height="86.758" fill="url(#pattern0)"></rect>
+                <defs>
+                  <pattern id="pattern0" patterncontentunits="objectBoundingBox" width="1" height="1">
+                    <use xlink:href="#image0_2408_1956" transform="matrix(0.00466441 0 0 0.0107527 -0.00375606 0)"></use>
+                  </pattern>
+                  <image id="image0_2408_1956" width="216" height="93" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANgAAABdCAYAAADHXaiGAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAABARpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQ1IDc5LjE2MzQ5OSwgMjAxOC8wOC8xMy0xNjo0MDoyMiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSJ1dWlkOjlFM0U1QzlBOEM4MURCMTE4NzM0REI1OEZEREU0QkE3IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjlCNThEMDRCODhDMjExRUNCRjc1OUMwNDQyNjc2NkYxIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjlCNThEMDRBODhDMjExRUNCRjc1OUMwNDQyNjc2NkYxIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIElsbHVzdHJhdG9yIENDIDIwMTcgKFdpbmRvd3MpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6ZmRkNmY2ZTctMTdmMS00ZTQ3LWE1NDctMzMyOWRmMjNlNTk1IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlk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"></image>
+                </defs>
+              </svg>
+            </div>
+            <p class="footer-about__text">Проектирование и внедрение IT-решений для&nbsp;компаний ТЭК и государственного сектора</p>
+          </div>
+          <div class="footer-content">
+            <div class="footer-content__contacts">
+              <div class="footer-content__contacts-title title-primary">Контакты</div>
+              <div class="footer-content__contacts-items">
+                <div class="footer-content__contacts-row">
+                  <div class="footer-content__contacts-item"> 
+                    <div class="footer-content__contacts-icon"> 
+                      <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M21 10C21 17 12 23 12 23C12 23 3 17 3 10C3 7.61305 3.94821 5.32387 5.63604 3.63604C7.32387 1.94821 9.61305 1 12 1C14.3869 1 16.6761 1.94821 18.364 3.63604C20.0518 5.32387 21 7.61305 21 10Z" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <path d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13Z" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                    <p class="footer-content__contacts-text">Москва, Каргопольская 6</p>
+                  </div>
+                </div>
+                <div class="footer-content__contacts-row"><a class="footer-content__contacts-item _hover" href="tel:+74951981492">
+                    <div class="footer-content__contacts-icon"> 
+                      <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M22 16.9201V19.9201C22.0011 20.1986 21.9441 20.4743 21.8325 20.7294C21.7209 20.9846 21.5573 21.2137 21.3521 21.402C21.1468 21.5902 20.9046 21.7336 20.6407 21.8228C20.3769 21.912 20.0974 21.9452 19.82 21.9201C16.7428 21.5857 13.787 20.5342 11.19 18.8501C8.77382 17.3148 6.72533 15.2663 5.18999 12.8501C3.49997 10.2413 2.44824 7.27109 2.11999 4.1801C2.095 3.90356 2.12787 3.62486 2.21649 3.36172C2.30512 3.09859 2.44756 2.85679 2.63476 2.65172C2.82196 2.44665 3.0498 2.28281 3.30379 2.17062C3.55777 2.05843 3.83233 2.00036 4.10999 2.0001H7.10999C7.5953 1.99532 8.06579 2.16718 8.43376 2.48363C8.80173 2.80008 9.04207 3.23954 9.10999 3.7201C9.23662 4.68016 9.47144 5.62282 9.80999 6.5301C9.94454 6.88802 9.97366 7.27701 9.8939 7.65098C9.81415 8.02494 9.62886 8.36821 9.35999 8.6401L8.08999 9.9101C9.51355 12.4136 11.5864 14.4865 14.09 15.9101L15.36 14.6401C15.6319 14.3712 15.9751 14.1859 16.3491 14.1062C16.7231 14.0264 17.1121 14.0556 17.47 14.1901C18.3773 14.5286 19.3199 14.7635 20.28 14.8901C20.7658 14.9586 21.2094 15.2033 21.5265 15.5776C21.8437 15.9519 22.0122 16.4297 22 16.9201Z" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                    <div class="footer-content__contacts-text">+7 (495)-198-14-92 </div></a></div>
+                <div class="footer-content__contacts-row">
+                  <div class="footer-content__contacts-item">
+                    <div class="footer-content__contacts-icon"> 
+                      <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <path d="M12 6V12L16 14" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                    <p class="footer-content__contacts-text">пн - пт 9:00 - 18:00</p>
+                  </div>
+                </div>
+                <div class="footer-content__contacts-row"><a class="footer-content__contacts-item _hover" href="mailto:info@crs-it.ru">
+                    <div class="footer-content__contacts-icon"> 
+                      <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <path d="M22 6L12 13L2 6" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                    <div class="footer-content__contacts-text">info@crs-it.ru</div></a></div>
+              </div>
+            </div>
+            <nav class="footer-content__nav">
+              <div class="footer-content__nav-title title-primary">Меню</div>
+              <ul class="footer-content__nav-list"> 
+                <li class="footer-content__nav-item"> <a class="footer-content__nav-link" href="#">Каталог</a></li>
+                <li class="footer-content__nav-item"> <a class="footer-content__nav-link" href="#">О нас</a></li>
+                <li class="footer-content__nav-item"> <a class="footer-content__nav-link" href="#">Услуги</a></li>
+                <li class="footer-content__nav-item"> <a class="footer-content__nav-link" href="#">Партнёрам</a></li>
+                <li class="footer-content__nav-item"> <a class="footer-content__nav-link" href="#">Контакты</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </body>
+</html>
