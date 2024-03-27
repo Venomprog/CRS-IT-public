@@ -9,7 +9,7 @@
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <meta content="ie=edge" http-equiv="x-ua-compatible">
     <link href="https://vitejs.dev/logo.svg" rel="icon" type="image/x-icon">
-    <script type="module" crossorigin src="assets/index-834c61d1.js"></script>
+    <script type="module" crossorigin src="assets/index-725ff468.js"></script>
     <link rel="stylesheet" href="styles/index.css">
   </head>
   <body>
@@ -120,7 +120,7 @@
                 </svg>
               </div>
               <div class="header-cart__tel-number">+7 (495)-198-14-92</div></a>
-            <div class="header-cart__btn"> 
+            <div class="header-cart__btn" data-modal-btn="main"> 
               <button class="button button-primary _small orange-100">Заказать звонок</button>
             </div>
           </div>
@@ -128,6 +128,35 @@
       </header>
       <main>
         <div class="overlay"> </div>
+        <div class="main-modal" data-modal="main">
+          <div class="main-modal__close" data-modal-close="main"> 
+            <svg width="40" height="40" viewbox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M26 14L14 26" stroke="#454545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+              <path d="M14 14L26 26" stroke="#454545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </div>
+          <form class="main-contact__form main-contact__form_modal" data-form="main">
+            <div class="main-contact__form-inner"> 
+              <p class="title-primary">Оставить заявку</p>
+              <p class="main-contact__form-descr">Менеджер свяжется с вами в течение 30 минут, <br>или в ближайший рабочий день с 8 до 20 часов</p>
+            </div>
+            <div class="main-contact__form-block"> 
+              <p class="main-contact__form-label">Имя</p>
+              <input class="main-contact__form-input" placeholder="Иван" type="text" required="required"/>
+            </div>
+            <div class="main-contact__form-block"> 
+              <p class="main-contact__form-label">Номер телефона</p>
+              <input class="main-contact__form-input" placeholder="+7 (900) - 000 - 00 - 00" type="tel" data-mask-phone="data-mask-phone" required="required"/>
+            </div>
+            <div class="main-contact__form-block"> 
+              <p class="main-contact__form-label">Комментарий</p>
+              <input class="main-contact__form-input" placeholder="Доступен для звонка с 10 до 20..." type="text"/>
+            </div>
+            <div class="main-contact__form-btn w-100"> 
+              <button class="button button-primary br-100 orange-gradient">Оставить заявку</button>
+            </div>
+          </form>
+        </div>
         <div class="modal-send" data-modal="send">
           <div class="modal-send__close" data-modal-close="send">
             <svg width="40" height="40" viewbox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -929,7 +958,7 @@
               <p class="main-contact__texts-descr desktop">Или в ближайший рабочий день <br>с 8 до 20 часов</p>
               <p class="main-contact__texts-descr mobile">Или в ближайший рабочий день с 8 до 20 часов</p>
             </div>
-            <form class="main-contact__form" data-form="main">
+            <form class="main-contact__form" data-form="main-contact">
               <div class="main-contact__form-inner"> 
                 <div class="main-contact__form-title">Заказать звонок</div>
               </div>
