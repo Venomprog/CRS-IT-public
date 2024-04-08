@@ -1,0 +1,1738 @@
+
+<!--Для добавления мобильной версии картинки добавляем вторым параметром true-->
+<!--Например +picture('image.jpg', 'true')-->
+<!--Миксин будет искать картинку с названием image-mob.jpg (тоесть вторая картинка должна иметь такое же название как и основная, только с добавлением -mob.png/jpg и тд)--><!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <title>catalog-list</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta content="ie=edge" http-equiv="x-ua-compatible">
+    <link href="https://vitejs.dev/logo.svg" rel="icon" type="image/x-icon">
+    <script type="module" crossorigin src="assets/index-33c53a86.js"></script>
+    <link rel="stylesheet" href="styles/index.css">
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="modal-block">
+      </div>
+      <header class="header">
+        <div class="header-inner"> 
+          <div class="header-logo"> <a class="header-logo__logo" href="#">
+              <svg width="100" height="44" viewbox="0 0 100 44" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <rect y="0.45752" width="100" height="43.0851" fill="url(#pattern0)"></rect>
+                <defs>
+                  <pattern id="pattern0" patterncontentunits="objectBoundingBox" width="1" height="1">
+                    <use xlink:href="#image0_4001_637" transform="matrix(0.00463281 0 0 0.0107527 -0.000343121 0)"></use>
+                  </pattern>
+                  <image id="image0_4001_637" width="216" height="93" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANgAAABdCAYAAADHXaiGAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAABARpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQ1IDc5LjE2MzQ5OSwgMjAxOC8wOC8xMy0xNjo0MDoyMiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSJ1dWlkOjlFM0U1QzlBOEM4MURCMTE4NzM0REI1OEZEREU0QkE3IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjlCNThEMDRCODhDMjExRUNCRjc1OUMwNDQyNjc2NkYxIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjlCNThEMDRBODhDMjExRUNCRjc1OUMwNDQyNjc2NkYxIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIElsbHVzdHJhdG9yIENDIDIwMTcgKFdpbmRvd3MpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6ZmRkNmY2ZTctMTdmMS00ZTQ3LWE1NDctMzMyOWRmMjNlNTk1IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlk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"></image>
+                </defs>
+              </svg></a></div>
+          <nav class="header-nav"> 
+            <div class="header-nav__link header-nav__accord">
+              <div class="header-nav__accord-top"> 
+                <p class="header-nav__accord-title">Каталог</p>
+                <div class="header-nav__accord-arrow">
+                  <svg width="24" height="28" viewbox="0 0 24 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 13L12 19L18 13" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </div>
+              <div class="header-nav__accord-dropdown header-nav__dropdown"> 
+                <div class="header-nav__dropdown-list"><a class="header-nav__dropdown-item" href="#"> 
+                    <div class="header-nav__dropdown-img"> 
+                      <picture class="picture">
+                        <source class="lazyload" type="image/webp" srcset="webp/header-catalog-img1.webp 1x" alt="header-catalog-img1.png"/>
+                        <source class="lazyload" srcset="images/header-catalog-img1.jpg 1x" alt="header-catalog-img1.png"/>
+                        <source class="lazyload" srcset="images/header-catalog-img1.png 1x" alt="header-catalog-img1.png"/><img class="picture__img lazyload" data-src="images/header-catalog-img1.png" alt="header-catalog-img1.png"/>
+                      </picture>
+                    </div>
+                    <p class="header-nav__dropdown-title">Дисплеи</p></a><a class="header-nav__dropdown-item" href="#"> 
+                    <div class="header-nav__dropdown-img"> 
+                      <picture class="picture">
+                        <source class="lazyload" type="image/webp" srcset="webp/header-catalog-img1.webp 1x" alt="header-catalog-img1.png"/>
+                        <source class="lazyload" srcset="images/header-catalog-img1.jpg 1x" alt="header-catalog-img1.png"/>
+                        <source class="lazyload" srcset="images/header-catalog-img1.png 1x" alt="header-catalog-img1.png"/><img class="picture__img lazyload" data-src="images/header-catalog-img1.png" alt="header-catalog-img1.png"/>
+                      </picture>
+                    </div>
+                    <p class="header-nav__dropdown-title">Система ВКС</p></a><a class="header-nav__dropdown-item" href="#"> 
+                    <div class="header-nav__dropdown-img"> 
+                      <picture class="picture">
+                        <source class="lazyload" type="image/webp" srcset="webp/header-catalog-img1.webp 1x" alt="header-catalog-img1.png"/>
+                        <source class="lazyload" srcset="images/header-catalog-img1.jpg 1x" alt="header-catalog-img1.png"/>
+                        <source class="lazyload" srcset="images/header-catalog-img1.png 1x" alt="header-catalog-img1.png"/><img class="picture__img lazyload" data-src="images/header-catalog-img1.png" alt="header-catalog-img1.png"/>
+                      </picture>
+                    </div>
+                    <p class="header-nav__dropdown-title">Система КС</p></a><a class="header-nav__dropdown-item" href="#"> 
+                    <div class="header-nav__dropdown-img"> 
+                      <picture class="picture">
+                        <source class="lazyload" type="image/webp" srcset="webp/header-catalog-img1.webp 1x" alt="header-catalog-img1.png"/>
+                        <source class="lazyload" srcset="images/header-catalog-img1.jpg 1x" alt="header-catalog-img1.png"/>
+                        <source class="lazyload" srcset="images/header-catalog-img1.png 1x" alt="header-catalog-img1.png"/><img class="picture__img lazyload" data-src="images/header-catalog-img1.png" alt="header-catalog-img1.png"/>
+                      </picture>
+                    </div>
+                    <p class="header-nav__dropdown-title">Кабельная продукция</p></a><a class="header-nav__dropdown-item" href="#"> 
+                    <div class="header-nav__dropdown-img"> 
+                      <picture class="picture">
+                        <source class="lazyload" type="image/webp" srcset="webp/header-catalog-img1.webp 1x" alt="header-catalog-img1.png"/>
+                        <source class="lazyload" srcset="images/header-catalog-img1.jpg 1x" alt="header-catalog-img1.png"/>
+                        <source class="lazyload" srcset="images/header-catalog-img1.png 1x" alt="header-catalog-img1.png"/><img class="picture__img lazyload" data-src="images/header-catalog-img1.png" alt="header-catalog-img1.png"/>
+                      </picture>
+                    </div>
+                    <p class="header-nav__dropdown-title">Крепления</p></a><a class="header-nav__dropdown-item" href="#"> 
+                    <div class="header-nav__dropdown-img"> 
+                      <picture class="picture">
+                        <source class="lazyload" type="image/webp" srcset="webp/header-catalog-img1.webp 1x" alt="header-catalog-img1.png"/>
+                        <source class="lazyload" srcset="images/header-catalog-img1.jpg 1x" alt="header-catalog-img1.png"/>
+                        <source class="lazyload" srcset="images/header-catalog-img1.png 1x" alt="header-catalog-img1.png"/><img class="picture__img lazyload" data-src="images/header-catalog-img1.png" alt="header-catalog-img1.png"/>
+                      </picture>
+                    </div>
+                    <p class="header-nav__dropdown-title">Проекторы</p></a><a class="header-nav__dropdown-item" href="#"> 
+                    <div class="header-nav__dropdown-img"> 
+                      <picture class="picture">
+                        <source class="lazyload" type="image/webp" srcset="webp/header-catalog-img1.webp 1x" alt="header-catalog-img1.png"/>
+                        <source class="lazyload" srcset="images/header-catalog-img1.jpg 1x" alt="header-catalog-img1.png"/>
+                        <source class="lazyload" srcset="images/header-catalog-img1.png 1x" alt="header-catalog-img1.png"/><img class="picture__img lazyload" data-src="images/header-catalog-img1.png" alt="header-catalog-img1.png"/>
+                      </picture>
+                    </div>
+                    <p class="header-nav__dropdown-title">Конфигураторы</p></a></div>
+              </div>
+            </div><a class="header-nav__link">О нас</a><a class="header-nav__link">Услуги</a><a class="header-nav__link">Партнёрам</a><a class="header-nav__link">Контакты</a>
+          </nav>
+          <div class="header-cart">
+            <div class="header-cart__cart"> 
+              <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20.0001 21.25C20.5524 21.25 21.0001 20.8023 21.0001 20.25C21.0001 19.6977 20.5524 19.25 20.0001 19.25C19.4478 19.25 19.0001 19.6977 19.0001 20.25C19.0001 20.8023 19.4478 21.25 20.0001 21.25Z" fill="#454545" stroke="#454545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M8.99988 21.25C9.55216 21.25 9.99988 20.8023 9.99988 20.25C9.99988 19.6977 9.55216 19.25 8.99988 19.25C8.44759 19.25 7.99988 19.6977 7.99988 20.25C7.99988 20.8023 8.44759 21.25 8.99988 21.25Z" fill="#454545" stroke="#454545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M1.5 2.25H4.5L7.68012 14.39C7.77157 14.8504 8.02203 15.2639 8.38767 15.5583C8.75331 15.8526 9.21082 16.009 9.68012 16H19.4001C19.8694 16.009 20.3269 15.8526 20.6926 15.5583C21.0582 15.2639 21.3087 14.8504 21.4001 14.39L22.5 5.99999H6.00012" stroke="#454545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </div>
+            <div class="header-cart__burger" data-modal-btn="burger"> 
+              <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 18L21 18" stroke="#454545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M3 12H21" stroke="#454545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M3 6H21" stroke="#454545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </div><a class="header-cart__tel" href="tel:+74951981492"> 
+              <div class="header-cart__tel-icon"> 
+                <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M22 16.9201V19.9201C22.0011 20.1986 21.9441 20.4743 21.8325 20.7294C21.7209 20.9846 21.5573 21.2137 21.3521 21.402C21.1468 21.5902 20.9046 21.7336 20.6407 21.8228C20.3769 21.912 20.0974 21.9452 19.82 21.9201C16.7428 21.5857 13.787 20.5342 11.19 18.8501C8.77382 17.3148 6.72533 15.2663 5.18999 12.8501C3.49997 10.2413 2.44824 7.27109 2.11999 4.1801C2.095 3.90356 2.12787 3.62486 2.21649 3.36172C2.30512 3.09859 2.44756 2.85679 2.63476 2.65172C2.82196 2.44665 3.0498 2.28281 3.30379 2.17062C3.55777 2.05843 3.83233 2.00036 4.10999 2.0001H7.10999C7.5953 1.99532 8.06579 2.16718 8.43376 2.48363C8.80173 2.80008 9.04207 3.23954 9.10999 3.7201C9.23662 4.68016 9.47144 5.62282 9.80999 6.5301C9.94454 6.88802 9.97366 7.27701 9.8939 7.65098C9.81415 8.02494 9.62886 8.36821 9.35999 8.6401L8.08999 9.9101C9.51355 12.4136 11.5864 14.4865 14.09 15.9101L15.36 14.6401C15.6319 14.3712 15.9751 14.1859 16.3491 14.1062C16.7231 14.0264 17.1121 14.0556 17.47 14.1901C18.3773 14.5286 19.3199 14.7635 20.28 14.8901C20.7658 14.9586 21.2094 15.2033 21.5265 15.5776C21.8437 15.9519 22.0122 16.4297 22 16.9201Z" stroke="#454545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </div>
+              <div class="header-cart__tel-number">+7 (495)-198-14-92</div></a>
+            <div class="header-cart__btn" data-modal-btn="main"> 
+              <button class="button button-primary _small orange-100">Заказать звонок</button>
+            </div>
+          </div>
+        </div>
+      </header>
+      <main class="catalog-list">
+        <div class="header-burger" data-modal="burger">
+          <div class="header-burger__close" data-modal-close="burger">
+            <svg width="40" height="40" viewbox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M26 14L14 26" stroke="#454545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+              <path d="M14 14L26 26" stroke="#454545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </div>
+          <div class="header-burger__inner">
+            <div class="header-burger__top">
+              <div class="header-burger__logo"> 
+                <svg width="100" height="44" viewbox="0 0 100 44" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                  <rect y="0.45752" width="100" height="43.0851" fill="url(#pattern0)"></rect>
+                  <defs>
+                    <pattern id="pattern0" patterncontentunits="objectBoundingBox" width="1" height="1">
+                      <use xlink:href="#image0_4001_637" transform="matrix(0.00463281 0 0 0.0107527 -0.000343121 0)"></use>
+                    </pattern>
+                    <image id="image0_4001_637" width="216" height="93" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANgAAABdCAYAAADHXaiGAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAABARpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQ1IDc5LjE2MzQ5OSwgMjAxOC8wOC8xMy0xNjo0MDoyMiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSJ1dWlkOjlFM0U1QzlBOEM4MURCMTE4NzM0REI1OEZEREU0QkE3IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjlCNThEMDRCODhDMjExRUNCRjc1OUMwNDQyNjc2NkYxIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjlCNThEMDRBODhDMjExRUNCRjc1OUMwNDQyNjc2NkYxIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIElsbHVzdHJhdG9yIENDIDIwMTcgKFdpbmRvd3MpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6ZmRkNmY2ZTctMTdmMS00ZTQ3LWE1NDctMzMyOWRmMjNlNTk1IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlk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"></image>
+                  </defs>
+                </svg>
+              </div>
+              <p class="header-burger__descr">Проектирование и внедрение <br>IT-решений для компаний ТЭК <br>и государственного сектора</p>
+              <nav class="header-burger__nav"> <a class="header-burger__nav-item" href="#">Каталог</a><a class="header-burger__nav-item" href="#">О нас</a><a class="header-burger__nav-item" href="#">Услуги</a><a class="header-burger__nav-item" href="#">Партнёрам</a><a class="header-burger__nav-item" href="#">Контакты</a></nav>
+            </div>
+            <div class="header-burger__bot"> 
+              <ul class="header-burger__contacts"> 
+                <li class="header-burger__contacts-item">Москва, Каргопольская 6</li>
+                <li class="header-burger__contacts-item">пн - пт 9:00 - 18:00</li>
+                <li class="header-burger__contacts-item"><a href="tel:+74951981492"> +7 (495)-198-14-92</a></li>
+                <li class="header-burger__contacts-item"><a href="mailto:info@crs-it.ru"> info@crs-it.ru</a></li>
+              </ul>
+              <div class="header-burger__btn" data-modal-btn="main">
+                <button class="button button-primary orange-100">Заказать звонок</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="overlay"> </div>
+        <div class="main-modal" data-modal="main">
+          <div class="main-modal__close" data-modal-close="main"> 
+            <svg width="40" height="40" viewbox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M26 14L14 26" stroke="#454545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+              <path d="M14 14L26 26" stroke="#454545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </div>
+          <form class="main-contact__form main-contact__form_modal" data-form="main">
+            <div class="main-contact__form-inner"> 
+              <p class="title-primary">Оставить заявку</p>
+              <p class="main-contact__form-descr desktop">Менеджер свяжется с вами в течение 30 минут, <br>или в ближайший рабочий день с 8 до 20 часов</p>
+              <p class="main-contact__form-descr mobile">Менеджер свяжется с вами <br>в течение 30 минут, или в ближайший <br>рабочий день с 8 до 20 часов</p>
+            </div>
+            <div class="main-contact__form-block"> 
+              <p class="main-contact__form-label">Имя</p>
+              <input class="main-contact__form-input" placeholder="Иван" type="text" required="required"/>
+            </div>
+            <div class="main-contact__form-block"> 
+              <p class="main-contact__form-label">Номер телефона</p>
+              <input class="main-contact__form-input" placeholder="+7 (900) - 000 - 00 - 00" type="tel" data-mask-phone="data-mask-phone" required="required"/>
+            </div>
+            <div class="main-contact__form-block"> 
+              <p class="main-contact__form-label">Комментарий</p>
+              <input class="main-contact__form-input" placeholder="Доступен для звонка с 10 до 20..." type="text"/>
+            </div>
+            <div class="main-contact__form-btn w-100"> 
+              <button class="button button-primary br-100 orange-gradient">Оставить заявку</button>
+            </div>
+          </form>
+        </div>
+        <div class="modal-send" data-modal="send">
+          <div class="modal-send__close" data-modal-close="send">
+            <svg width="40" height="40" viewbox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M26 14L14 26" stroke="#454545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+              <path d="M14 14L26 26" stroke="#454545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </div>
+          <div class="modal-send__inner"> 
+            <div class="modal-send__icon"> 
+              <svg width="100" height="100" viewbox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M50.4401 88.12C29.7101 88.12 12.8401 71.24 12.8401 50.49C12.8401 40.44 16.75 30.98 23.85 23.87C30.95 16.76 40.4001 12.85 50.4401 12.85C71.1701 12.85 88.04 29.73 88.04 50.49C88.04 71.25 71.1701 88.12 50.4401 88.12ZM50.4401 14.31C30.5101 14.31 14.3 30.54 14.3 50.49C14.3 70.44 30.5101 86.66 50.4401 86.66C70.3701 86.66 86.5801 70.43 86.5801 50.49C86.5801 30.55 70.3701 14.31 50.4401 14.31Z" fill="#FF7917"></path>
+                <path d="M50.44 94.97C38.57 94.97 27.41 90.34 19.02 81.94C10.63 73.54 6 62.37 6 50.49C6 38.61 10.62 27.44 19.02 19.03C27.41 10.63 38.57 6 50.44 6C62.31 6 73.47 10.63 81.86 19.03C90.25 27.43 94.88 38.6 94.88 50.49C94.88 62.38 90.26 73.54 81.86 81.94C73.47 90.34 62.31 94.97 50.44 94.97ZM50.44 7.47C26.74 7.47 7.46002 26.77 7.46002 50.49C7.46002 74.21 26.74 93.51 50.44 93.51C74.14 93.51 93.42 74.21 93.42 50.49C93.42 26.77 74.14 7.47 50.44 7.47Z" fill="#FF7917"></path>
+                <path d="M74 36L45.125 65L32 51.8182" stroke="#FF7917" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </div>
+            <p class="modal-send__title">Заявка отправлена</p>
+            <p class="modal-send__text desktop">Менеджер свяжется с вами в течение 30 минут, <br>или в ближайший рабочий день с 8 до 20 часов</p>
+            <p class="modal-send__text mobile">Менеджер свяжется с вами <br>в&nbsp;течение&nbsp;30 минут, или в ближайший рабочий день с 8 до 20 часов</p>
+          </div>
+        </div>
+        <div class="modal-offer" data-modal="offer">
+          <div class="modal-offer__close" data-modal-close="offer"> 
+            <svg width="40" height="40" viewbox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M26 14L14 26" stroke="#454545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+              <path d="M14 14L26 26" stroke="#454545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </div>
+          <div class="modal-offer__inner"> 
+            <div class="modal-offer__cards"> 
+              <div class="offer-card" data-offer-card="data-offer-card">
+                <div class="offer-card__delete">
+                  <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 6H5H21" stroke="#454545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M8 6.6V4.8C8 4.32261 8.21071 3.86477 8.58579 3.52721C8.96086 3.18964 9.46957 3 10 3H14C14.5304 3 15.0391 3.18964 15.4142 3.52721C15.7893 3.86477 16 4.32261 16 4.8V6.6M19 6.6V19.2C19 19.6774 18.7893 20.1352 18.4142 20.4728C18.0391 20.8104 17.5304 21 17 21H7C6.46957 21 5.96086 20.8104 5.58579 20.4728C5.21071 20.1352 5 19.6774 5 19.2V6.6H19Z" stroke="#454545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M14 11V16" stroke="#454545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M10 11V16" stroke="#454545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+                <div class="offer-card__inner"> 
+                  <div class="offer-card__img"> 
+                    <picture class="picture">
+                      <source class="lazyload" type="image/webp" srcset="webp/catalog-card-img1.webp 1x" alt="catalog-card-img1.png"/>
+                      <source class="lazyload" srcset="images/catalog-card-img1.jpg 1x" alt="catalog-card-img1.png"/>
+                      <source class="lazyload" srcset="images/catalog-card-img1.png 1x" alt="catalog-card-img1.png"/><img class="picture__img lazyload" data-src="images/catalog-card-img1.png" alt="catalog-card-img1.png"/>
+                    </picture>
+                  </div>
+                  <div class="offer-card__content"> 
+                    <div class="offer-card__content-title">Информационный дисплей BOE 43" SR43AA</div>
+                    <div class="offer-card__content-descr"> 
+                      <div class="offer-card__content-row"> 
+                        <p class="offer-card__content-property">Производитель</p>
+                        <p class="offer-card__content-text">BOE</p>
+                      </div>
+                      <div class="offer-card__content-row"> 
+                        <p class="offer-card__content-property">Модель</p>
+                        <p class="offer-card__content-text">SR43AA</p>
+                      </div>
+                      <div class="offer-card__content-row"> 
+                        <p class="offer-card__content-property">Артикул</p>
+                        <p class="offer-card__content-text">1489771</p>
+                      </div>
+                    </div>
+                    <div class="offer-card__content-bot"> 
+                      <div class="offer-card__content-price">211 012 ₽</div>
+                      <div class="offer-card__content-count">
+                        <div class="catalog-card__count-wrapper"> 
+                          <div class="catalog-card__count-mines" data-counter-mines="data-counter-mines"> 
+                            <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M5 12H19" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                          </div>
+                          <input class="catalog-card__count-number" data-counter-input="data-counter-input" type="text" value="1"/>
+                          <div class="catalog-card__count-plus" data-counter-plus="data-counter-plus"> 
+                            <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M12 5V19" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                              <path d="M5 12H19" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-offer__results"> 
+              <div class="modal-offer__results-text">Итого:</div>
+              <div class="modal-offer__results-price">779 921 ₽</div>
+            </div>
+            <form class="modal-offer__form"> 
+              <p class="modal-offer__form-title">Оформить заказ</p>
+              <p class="modal-offer__form-descr">Менеджер свяжется с вами в течение 15 минут для подтверждения заказа</p>
+              <div class="modal-offer__form-row"> 
+                <div class="main-contact__form-block"> 
+                  <p class="main-contact__form-label">Имя</p>
+                  <input class="main-contact__form-input" placeholder="Иван" type="text" required="required"/>
+                </div>
+                <div class="main-contact__form-block"> 
+                  <p class="main-contact__form-label">Почта</p>
+                  <input class="main-contact__form-input" placeholder="example@company.com" type="email"/>
+                </div>
+                <div class="main-contact__form-block"> 
+                  <p class="main-contact__form-label">Номер телефона</p>
+                  <input class="main-contact__form-input" placeholder="+7 (900) - 000 - 00 - 00" type="tel" data-mask-phone="data-mask-phone" required="required"/>
+                </div>
+              </div>
+              <div class="main-contact__form-block modal-offer__form-comment"> 
+                <p class="main-contact__form-label">Комментарий</p>
+                <input class="main-contact__form-input" placeholder="Доступен для звонка с 10 до 20..." type="text"/>
+              </div>
+            </form>
+          </div>
+        </div>
+        <section class="top-section catalog-list__hero container">
+          <div class="catalog-list__lines"> 
+            <svg width="1148" height="271" viewbox="0 0 1148 271" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8.00701 -38.4309C8.00701 -38.4309 -53.9657 66.5287 190.774 95.2172C296.096 107.563 395.61 97.529 498.656 110.524C692.717 134.996 535.838 182.78 681.423 216.985C1040.83 301.43 1241.99 -38.4309 1241.99 -38.4309" stroke="url(#paint0_linear_2233_16474)" stroke-opacity="0.5" stroke-width="2"></path>
+              <path d="M8.00896 -33.8621C8.00896 -33.8621 -53.9638 71.0976 190.776 99.786C296.098 112.132 395.612 102.098 498.658 115.093C692.719 139.565 535.84 187.349 681.425 221.554C1040.83 305.999 1241.99 -33.862 1241.99 -33.862" stroke="url(#paint1_linear_2233_16474)" stroke-opacity="0.5" stroke-width="2"></path>
+              <path d="M8.00701 -29.2932C8.00701 -29.2932 -53.9657 75.6664 190.774 104.355C296.096 116.701 395.61 106.667 498.656 119.662C692.717 144.134 535.838 191.917 681.423 226.123C1040.83 310.568 1241.99 -29.2932 1241.99 -29.2932" stroke="url(#paint2_linear_2233_16474)" stroke-opacity="0.5" stroke-width="2"></path>
+              <path d="M8.00506 -24.7236C8.00506 -24.7236 -53.9677 80.236 190.772 108.924C296.094 121.27 395.608 111.236 498.654 124.231C692.715 148.704 535.836 196.487 681.421 230.693C1040.83 315.137 1241.99 -24.7236 1241.99 -24.7236" stroke="url(#paint3_linear_2233_16474)" stroke-opacity="0.5" stroke-width="2"></path>
+              <path d="M8.00799 -20.1548C8.00799 -20.1548 -53.9648 84.8048 190.775 113.493C296.097 125.839 395.611 115.805 498.657 128.8C692.718 153.272 535.839 201.056 681.424 235.262C1040.83 319.706 1241.99 -20.1547 1241.99 -20.1547" stroke="url(#paint4_linear_2233_16474)" stroke-opacity="0.5" stroke-width="2"></path>
+              <path d="M8.00603 -15.5852C8.00603 -15.5852 -53.9667 89.3744 190.773 118.063C296.095 130.409 395.609 120.375 498.655 133.37C692.716 157.842 535.837 205.625 681.422 239.831C1040.83 324.276 1241.99 -15.5852 1241.99 -15.5852" stroke="url(#paint5_linear_2233_16474)" stroke-opacity="0.5" stroke-width="2"></path>
+              <path d="M8.00408 -11.0166C8.00408 -11.0166 -53.9687 93.943 190.771 122.632C296.093 134.977 395.607 124.943 498.653 137.938C692.714 162.411 535.835 210.194 681.42 244.4C1040.83 328.844 1241.99 -11.0165 1241.99 -11.0165" stroke="url(#paint6_linear_2233_16474)" stroke-opacity="0.5" stroke-width="2"></path>
+              <path d="M8.08904 -7.39502C8.08904 -7.39502 -53.8837 97.5646 190.856 126.253C296.178 138.599 395.692 128.565 498.738 141.56C692.799 166.032 535.92 213.816 681.505 248.021C1040.91 332.466 1242.07 -7.39497 1242.07 -7.39497" stroke="url(#paint7_linear_2233_16474)" stroke-opacity="0.5" stroke-width="2"></path>
+              <path d="M8.17498 -3.77368C8.17498 -3.77368 -53.7978 101.186 190.942 129.874C296.264 142.22 395.778 132.186 498.824 145.181C692.885 169.654 536.006 217.437 681.591 251.643C1041 336.087 1242.16 -3.77363 1242.16 -3.77363" stroke="url(#paint8_linear_2233_16474)" stroke-opacity="0.5" stroke-width="2"></path>
+              <path d="M8.27166 0.57251C8.27166 0.57251 -53.7011 105.532 191.038 134.221C296.361 146.567 395.874 136.532 498.921 149.527C692.981 174 536.103 221.783 681.688 255.989C1041.1 340.433 1242.25 0.572564 1242.25 0.572564" stroke="url(#paint9_linear_2233_16474)" stroke-opacity="0.5" stroke-width="2"></path>
+              <path d="M8.00506 -43C8.00506 -43 -53.9677 61.9596 190.772 90.6481C296.094 102.994 395.608 92.9599 498.654 105.955C692.715 130.427 535.836 178.211 681.421 212.416C1040.83 296.861 1241.99 -42.9999 1241.99 -42.9999" stroke="url(#paint10_linear_2233_16474)" stroke-opacity="0.5" stroke-width="2"></path>
+              <defs>
+                <lineargradient id="paint0_linear_2233_16474" x1="1.00292" y1="96.0181" x2="1241.99" y2="96.0182" gradientunits="userSpaceOnUse">
+                  <stop offset="0.595" stop-color="#FF7917"></stop>
+                  <stop offset="1" stop-color="#000AFF"></stop>
+                </lineargradient>
+                <lineargradient id="paint1_linear_2233_16474" x1="1.00488" y1="100.587" x2="1241.99" y2="100.587" gradientunits="userSpaceOnUse">
+                  <stop offset="0.595" stop-color="#FF7917"></stop>
+                  <stop offset="1" stop-color="#000AFF"></stop>
+                </lineargradient>
+                <lineargradient id="paint2_linear_2233_16474" x1="1.00292" y1="105.156" x2="1241.99" y2="105.156" gradientunits="userSpaceOnUse">
+                  <stop offset="0.595" stop-color="#FF7917"></stop>
+                  <stop offset="1" stop-color="#000AFF"></stop>
+                </lineargradient>
+                <lineargradient id="paint3_linear_2233_16474" x1="1.00097" y1="109.725" x2="1241.99" y2="109.725" gradientunits="userSpaceOnUse">
+                  <stop offset="0.595" stop-color="#FF7917"></stop>
+                  <stop offset="1" stop-color="#000AFF"></stop>
+                </lineargradient>
+                <lineargradient id="paint4_linear_2233_16474" x1="1.0039" y1="114.294" x2="1241.99" y2="114.294" gradientunits="userSpaceOnUse">
+                  <stop offset="0.595" stop-color="#FF7917"></stop>
+                  <stop offset="1" stop-color="#000AFF"></stop>
+                </lineargradient>
+                <lineargradient id="paint5_linear_2233_16474" x1="1.00195" y1="118.864" x2="1241.99" y2="118.864" gradientunits="userSpaceOnUse">
+                  <stop offset="0.595" stop-color="#FF7917"></stop>
+                  <stop offset="1" stop-color="#000AFF"></stop>
+                </lineargradient>
+                <lineargradient id="paint6_linear_2233_16474" x1="0.999994" y1="123.432" x2="1241.99" y2="123.432" gradientunits="userSpaceOnUse">
+                  <stop offset="0.595" stop-color="#FF7917"></stop>
+                  <stop offset="1" stop-color="#000AFF"></stop>
+                </lineargradient>
+                <lineargradient id="paint7_linear_2233_16474" x1="1.08496" y1="127.054" x2="1242.07" y2="127.054" gradientunits="userSpaceOnUse">
+                  <stop offset="0.595" stop-color="#FF7917"></stop>
+                  <stop offset="1" stop-color="#000AFF"></stop>
+                </lineargradient>
+                <lineargradient id="paint8_linear_2233_16474" x1="1.17089" y1="130.675" x2="1242.16" y2="130.675" gradientunits="userSpaceOnUse">
+                  <stop offset="0.595" stop-color="#FF7917"></stop>
+                  <stop offset="1" stop-color="#000AFF"></stop>
+                </lineargradient>
+                <lineargradient id="paint9_linear_2233_16474" x1="1.26757" y1="135.022" x2="1242.25" y2="135.022" gradientunits="userSpaceOnUse">
+                  <stop offset="0.595" stop-color="#FF7917"></stop>
+                  <stop offset="1" stop-color="#000AFF"></stop>
+                </lineargradient>
+                <lineargradient id="paint10_linear_2233_16474" x1="1.00097" y1="91.449" x2="1241.99" y2="91.4491" gradientunits="userSpaceOnUse">
+                  <stop offset="0.595" stop-color="#FF7917"></stop>
+                  <stop offset="1" stop-color="#000AFF"></stop>
+                </lineargradient>
+              </defs>
+            </svg>
+          </div>
+          <div class="catalog-list__breadcrumbs">
+            <div class="breadcrumbs">
+              <div class="breadcrumbs-item"> <a class="breadcrumbs-item__text" href="#">Главная</a>
+                <div class="breadcrumbs-item__slash">/</div>
+              </div>
+              <div class="breadcrumbs-item"> <a class="breadcrumbs-item__text" href="#">Каталог</a>
+                <div class="breadcrumbs-item__slash">/</div>
+              </div>
+              <div class="breadcrumbs-item"> 
+                <div class="breadcrumbs-item__text">Дисплеи</div>
+              </div>
+            </div>
+          </div>
+          <div class="catalog-list__inner">
+            <div class="catalog-list__title title-primary">Дисплеи</div>
+            <div class="catalog-list__row"> 
+              <div class="catalog-list__filters"> 
+                <form class="catalog-list__filters-inner catalog-list__filters-form"> 
+                  <div class="catalog-list__filters-accords"> 
+                    <div class="accordion-container">
+                      <div class="ac catalog-ac">
+                        <div class="ac-header ac-trigger catalog-ac__header"> 
+                          <p class="catalog-ac__header-title">Производитель</p>
+                          <div class="catalog-ac__header-arrow">
+                            <svg width="24" height="28" viewbox="0 0 24 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M6 13L12 19L18 13" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                          </div>
+                        </div>
+                        <div class="ac-panel">
+                          <div class="catalog-ac__checkboxes"> 
+                            <label class="catalog-checkbox" for="benq">
+                              <input class="catalog-checkbox__input" type="checkbox" id="benq" name="benq"/>
+                              <div class="catalog-checkbox__box"> 
+                                <div class="catalog-checkbox__box-icon">
+                                  <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_2803_8122)">
+                                      <rect width="24" height="24" rx="8" fill="#FF9446"></rect>
+                                      <path d="M6 11.474L10.39 16L18.297 8.246" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </g>
+                                    <defs>
+                                      <clippath id="clip0_2803_8122">
+                                        <rect width="24" height="24" rx="8" fill="white"></rect>
+                                      </clippath>
+                                    </defs>
+                                  </svg>
+                                </div>
+                              </div>
+                              <div class="catalog-checkbox__title">Benq (23)</div>
+                            </label>
+                            <label class="catalog-checkbox" for="boe">
+                              <input class="catalog-checkbox__input" type="checkbox" id="boe" name="boe"/>
+                              <div class="catalog-checkbox__box"> 
+                                <div class="catalog-checkbox__box-icon">
+                                  <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_2803_8122)">
+                                      <rect width="24" height="24" rx="8" fill="#FF9446"></rect>
+                                      <path d="M6 11.474L10.39 16L18.297 8.246" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </g>
+                                    <defs>
+                                      <clippath id="clip0_2803_8122">
+                                        <rect width="24" height="24" rx="8" fill="white"></rect>
+                                      </clippath>
+                                    </defs>
+                                  </svg>
+                                </div>
+                              </div>
+                              <div class="catalog-checkbox__title">BOE (24)</div>
+                            </label>
+                            <label class="catalog-checkbox" for="hk">
+                              <input class="catalog-checkbox__input" type="checkbox" id="hk" name="hk"/>
+                              <div class="catalog-checkbox__box"> 
+                                <div class="catalog-checkbox__box-icon">
+                                  <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_2803_8122)">
+                                      <rect width="24" height="24" rx="8" fill="#FF9446"></rect>
+                                      <path d="M6 11.474L10.39 16L18.297 8.246" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </g>
+                                    <defs>
+                                      <clippath id="clip0_2803_8122">
+                                        <rect width="24" height="24" rx="8" fill="white"></rect>
+                                      </clippath>
+                                    </defs>
+                                  </svg>
+                                </div>
+                              </div>
+                              <div class="catalog-checkbox__title">HIKVISION (78)</div>
+                            </label>
+                            <label class="catalog-checkbox" for="lg">
+                              <input class="catalog-checkbox__input" type="checkbox" id="lg" name="lg"/>
+                              <div class="catalog-checkbox__box"> 
+                                <div class="catalog-checkbox__box-icon">
+                                  <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_2803_8122)">
+                                      <rect width="24" height="24" rx="8" fill="#FF9446"></rect>
+                                      <path d="M6 11.474L10.39 16L18.297 8.246" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </g>
+                                    <defs>
+                                      <clippath id="clip0_2803_8122">
+                                        <rect width="24" height="24" rx="8" fill="white"></rect>
+                                      </clippath>
+                                    </defs>
+                                  </svg>
+                                </div>
+                              </div>
+                              <div class="catalog-checkbox__title">LG (32)</div>
+                            </label>
+                            <label class="catalog-checkbox" for="pan">
+                              <input class="catalog-checkbox__input" type="checkbox" id="pan" name="pan"/>
+                              <div class="catalog-checkbox__box"> 
+                                <div class="catalog-checkbox__box-icon">
+                                  <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_2803_8122)">
+                                      <rect width="24" height="24" rx="8" fill="#FF9446"></rect>
+                                      <path d="M6 11.474L10.39 16L18.297 8.246" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </g>
+                                    <defs>
+                                      <clippath id="clip0_2803_8122">
+                                        <rect width="24" height="24" rx="8" fill="white"></rect>
+                                      </clippath>
+                                    </defs>
+                                  </svg>
+                                </div>
+                              </div>
+                              <div class="catalog-checkbox__title">Panasonic (65)</div>
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-container">
+                      <div class="ac catalog-ac">
+                        <div class="ac-header ac-trigger catalog-ac__header"> 
+                          <p class="catalog-ac__header-title">Диагональ (в дюймах)</p>
+                          <div class="catalog-ac__header-arrow">
+                            <svg width="24" height="28" viewbox="0 0 24 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M6 13L12 19L18 13" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                          </div>
+                        </div>
+                        <div class="ac-panel">
+                          <div class="catalog-ranges" data-catalog-ranges="data-catalog-ranges"> 
+                            <div class="catalog-ranges__top"> 
+                              <div class="catalog-ranges__top-item"> 
+                                <div class="catalog-ranges__top-text">От</div>
+                                <input class="catalog-ranges__top-input" data-range="1" type="text"/>
+                              </div>
+                              <div class="catalog-ranges__top-item"> 
+                                <div class="catalog-ranges__top-text">До</div>
+                                <input class="catalog-ranges__top-input" data-range="2" type="text"/>
+                              </div>
+                            </div>
+                            <div class="catalog-ranges__slider"> 
+                              <div class="catalog-ranges__slider-track" data-ranges-track="data-ranges-track"> </div>
+                              <input class="catalog-ranges__slider-input" type="range" min="0" max="100" value="30" data-range-slider="1"/>
+                              <input class="catalog-ranges__slider-input" type="range" min="0" max="100" value="70" data-range-slider="2"/>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-container">
+                      <div class="ac catalog-ac">
+                        <div class="ac-header ac-trigger catalog-ac__header"> 
+                          <p class="catalog-ac__header-title">Яркость</p>
+                          <div class="catalog-ac__header-arrow">
+                            <svg width="24" height="28" viewbox="0 0 24 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M6 13L12 19L18 13" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                          </div>
+                        </div>
+                        <div class="ac-panel">
+                          <div class="catalog-ranges" data-catalog-ranges="data-catalog-ranges"> 
+                            <div class="catalog-ranges__top"> 
+                              <div class="catalog-ranges__top-item"> 
+                                <div class="catalog-ranges__top-text">От</div>
+                                <input class="catalog-ranges__top-input" data-range="1" type="text"/>
+                              </div>
+                              <div class="catalog-ranges__top-item"> 
+                                <div class="catalog-ranges__top-text">До</div>
+                                <input class="catalog-ranges__top-input" data-range="2" type="text"/>
+                              </div>
+                            </div>
+                            <div class="catalog-ranges__slider"> 
+                              <div class="catalog-ranges__slider-track" data-ranges-track="data-ranges-track"> </div>
+                              <input class="catalog-ranges__slider-input" type="range" min="0" max="100" value="30" data-range-slider="1"/>
+                              <input class="catalog-ranges__slider-input" type="range" min="0" max="100" value="70" data-range-slider="2"/>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-container">
+                      <div class="ac catalog-ac">
+                        <div class="ac-header ac-trigger catalog-ac__header"> 
+                          <p class="catalog-ac__header-title">Контрастность</p>
+                          <div class="catalog-ac__header-arrow">
+                            <svg width="24" height="28" viewbox="0 0 24 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M6 13L12 19L18 13" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                          </div>
+                        </div>
+                        <div class="ac-panel">
+                          <div class="catalog-ac__checkboxes"> 
+                            <label class="catalog-checkbox" for="ct1">
+                              <input class="catalog-checkbox__input" type="checkbox" id="ct1" name="ct1"/>
+                              <div class="catalog-checkbox__box"> 
+                                <div class="catalog-checkbox__box-icon">
+                                  <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_2803_8122)">
+                                      <rect width="24" height="24" rx="8" fill="#FF9446"></rect>
+                                      <path d="M6 11.474L10.39 16L18.297 8.246" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </g>
+                                    <defs>
+                                      <clippath id="clip0_2803_8122">
+                                        <rect width="24" height="24" rx="8" fill="white"></rect>
+                                      </clippath>
+                                    </defs>
+                                  </svg>
+                                </div>
+                              </div>
+                              <div class="catalog-checkbox__title">1000000:1 (1)</div>
+                            </label>
+                            <label class="catalog-checkbox" for="ct2">
+                              <input class="catalog-checkbox__input" type="checkbox" id="ct2" name="ct2"/>
+                              <div class="catalog-checkbox__box"> 
+                                <div class="catalog-checkbox__box-icon">
+                                  <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_2803_8122)">
+                                      <rect width="24" height="24" rx="8" fill="#FF9446"></rect>
+                                      <path d="M6 11.474L10.39 16L18.297 8.246" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </g>
+                                    <defs>
+                                      <clippath id="clip0_2803_8122">
+                                        <rect width="24" height="24" rx="8" fill="white"></rect>
+                                      </clippath>
+                                    </defs>
+                                  </svg>
+                                </div>
+                              </div>
+                              <div class="catalog-checkbox__title">10000:1 (1)</div>
+                            </label>
+                            <label class="catalog-checkbox" for="ct3">
+                              <input class="catalog-checkbox__input" type="checkbox" id="ct3" name="ct3"/>
+                              <div class="catalog-checkbox__box"> 
+                                <div class="catalog-checkbox__box-icon">
+                                  <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_2803_8122)">
+                                      <rect width="24" height="24" rx="8" fill="#FF9446"></rect>
+                                      <path d="M6 11.474L10.39 16L18.297 8.246" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </g>
+                                    <defs>
+                                      <clippath id="clip0_2803_8122">
+                                        <rect width="24" height="24" rx="8" fill="white"></rect>
+                                      </clippath>
+                                    </defs>
+                                  </svg>
+                                </div>
+                              </div>
+                              <div class="catalog-checkbox__title">1100:1 (35)</div>
+                            </label>
+                            <label class="catalog-checkbox" for="ct4">
+                              <input class="catalog-checkbox__input" type="checkbox" id="ct4" name="ct4"/>
+                              <div class="catalog-checkbox__box"> 
+                                <div class="catalog-checkbox__box-icon">
+                                  <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_2803_8122)">
+                                      <rect width="24" height="24" rx="8" fill="#FF9446"></rect>
+                                      <path d="M6 11.474L10.39 16L18.297 8.246" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </g>
+                                    <defs>
+                                      <clippath id="clip0_2803_8122">
+                                        <rect width="24" height="24" rx="8" fill="white"></rect>
+                                      </clippath>
+                                    </defs>
+                                  </svg>
+                                </div>
+                              </div>
+                              <div class="catalog-checkbox__title">1200:1 (13)</div>
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-container">
+                      <div class="ac catalog-ac">
+                        <div class="ac-header ac-trigger catalog-ac__header"> 
+                          <p class="catalog-ac__header-title">Режим работы</p>
+                          <div class="catalog-ac__header-arrow">
+                            <svg width="24" height="28" viewbox="0 0 24 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M6 13L12 19L18 13" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                          </div>
+                        </div>
+                        <div class="ac-panel">
+                          <div class="catalog-ac__checkboxes"> 
+                            <label class="catalog-checkbox" for="rr1">
+                              <input class="catalog-checkbox__input" type="checkbox" id="rr1" name="rr1"/>
+                              <div class="catalog-checkbox__box"> 
+                                <div class="catalog-checkbox__box-icon">
+                                  <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_2803_8122)">
+                                      <rect width="24" height="24" rx="8" fill="#FF9446"></rect>
+                                      <path d="M6 11.474L10.39 16L18.297 8.246" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </g>
+                                    <defs>
+                                      <clippath id="clip0_2803_8122">
+                                        <rect width="24" height="24" rx="8" fill="white"></rect>
+                                      </clippath>
+                                    </defs>
+                                  </svg>
+                                </div>
+                              </div>
+                              <div class="catalog-checkbox__title">12/7 (5)</div>
+                            </label>
+                            <label class="catalog-checkbox" for="rr2">
+                              <input class="catalog-checkbox__input" type="checkbox" id="rr2" name="rr2"/>
+                              <div class="catalog-checkbox__box"> 
+                                <div class="catalog-checkbox__box-icon">
+                                  <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_2803_8122)">
+                                      <rect width="24" height="24" rx="8" fill="#FF9446"></rect>
+                                      <path d="M6 11.474L10.39 16L18.297 8.246" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </g>
+                                    <defs>
+                                      <clippath id="clip0_2803_8122">
+                                        <rect width="24" height="24" rx="8" fill="white"></rect>
+                                      </clippath>
+                                    </defs>
+                                  </svg>
+                                </div>
+                              </div>
+                              <div class="catalog-checkbox__title">16/7 (11)</div>
+                            </label>
+                            <label class="catalog-checkbox" for="rr3">
+                              <input class="catalog-checkbox__input" type="checkbox" id="rr3" name="rr3"/>
+                              <div class="catalog-checkbox__box"> 
+                                <div class="catalog-checkbox__box-icon">
+                                  <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_2803_8122)">
+                                      <rect width="24" height="24" rx="8" fill="#FF9446"></rect>
+                                      <path d="M6 11.474L10.39 16L18.297 8.246" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </g>
+                                    <defs>
+                                      <clippath id="clip0_2803_8122">
+                                        <rect width="24" height="24" rx="8" fill="white"></rect>
+                                      </clippath>
+                                    </defs>
+                                  </svg>
+                                </div>
+                              </div>
+                              <div class="catalog-checkbox__title">18/7 (87)</div>
+                            </label>
+                            <label class="catalog-checkbox" for="rr4">
+                              <input class="catalog-checkbox__input" type="checkbox" id="rr4" name="rr4"/>
+                              <div class="catalog-checkbox__box"> 
+                                <div class="catalog-checkbox__box-icon">
+                                  <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_2803_8122)">
+                                      <rect width="24" height="24" rx="8" fill="#FF9446"></rect>
+                                      <path d="M6 11.474L10.39 16L18.297 8.246" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </g>
+                                    <defs>
+                                      <clippath id="clip0_2803_8122">
+                                        <rect width="24" height="24" rx="8" fill="white"></rect>
+                                      </clippath>
+                                    </defs>
+                                  </svg>
+                                </div>
+                              </div>
+                              <div class="catalog-checkbox__title">24/7 (78)</div>
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-container">
+                      <div class="ac catalog-ac">
+                        <div class="ac-header ac-trigger catalog-ac__header"> 
+                          <p class="catalog-ac__header-title">Встроенный WEB-браузер</p>
+                          <div class="catalog-ac__header-arrow">
+                            <svg width="24" height="28" viewbox="0 0 24 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M6 13L12 19L18 13" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                          </div>
+                        </div>
+                        <div class="ac-panel">
+                          <div class="catalog-ac__checkboxes"> 
+                            <label class="catalog-checkbox" for="wb1">
+                              <input class="catalog-checkbox__input" type="checkbox" id="wb1" name="wb1"/>
+                              <div class="catalog-checkbox__box"> 
+                                <div class="catalog-checkbox__box-icon">
+                                  <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_2803_8122)">
+                                      <rect width="24" height="24" rx="8" fill="#FF9446"></rect>
+                                      <path d="M6 11.474L10.39 16L18.297 8.246" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </g>
+                                    <defs>
+                                      <clippath id="clip0_2803_8122">
+                                        <rect width="24" height="24" rx="8" fill="white"></rect>
+                                      </clippath>
+                                    </defs>
+                                  </svg>
+                                </div>
+                              </div>
+                              <div class="catalog-checkbox__title">webRTC (23)</div>
+                            </label>
+                            <label class="catalog-checkbox" for="wb2">
+                              <input class="catalog-checkbox__input" type="checkbox" id="wb2" name="wb2"/>
+                              <div class="catalog-checkbox__box"> 
+                                <div class="catalog-checkbox__box-icon">
+                                  <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_2803_8122)">
+                                      <rect width="24" height="24" rx="8" fill="#FF9446"></rect>
+                                      <path d="M6 11.474L10.39 16L18.297 8.246" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </g>
+                                    <defs>
+                                      <clippath id="clip0_2803_8122">
+                                        <rect width="24" height="24" rx="8" fill="white"></rect>
+                                      </clippath>
+                                    </defs>
+                                  </svg>
+                                </div>
+                              </div>
+                              <div class="catalog-checkbox__title">да (29)</div>
+                            </label>
+                            <label class="catalog-checkbox" for="wb3">
+                              <input class="catalog-checkbox__input" type="checkbox" id="wb3" name="wb3"/>
+                              <div class="catalog-checkbox__box"> 
+                                <div class="catalog-checkbox__box-icon">
+                                  <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_2803_8122)">
+                                      <rect width="24" height="24" rx="8" fill="#FF9446"></rect>
+                                      <path d="M6 11.474L10.39 16L18.297 8.246" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </g>
+                                    <defs>
+                                      <clippath id="clip0_2803_8122">
+                                        <rect width="24" height="24" rx="8" fill="white"></rect>
+                                      </clippath>
+                                    </defs>
+                                  </svg>
+                                </div>
+                              </div>
+                              <div class="catalog-checkbox__title">нет (13)</div>
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-container">
+                      <div class="ac catalog-ac">
+                        <div class="ac-header ac-trigger catalog-ac__header"> 
+                          <p class="catalog-ac__header-title">Входы</p>
+                          <div class="catalog-ac__header-arrow">
+                            <svg width="24" height="28" viewbox="0 0 24 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M6 13L12 19L18 13" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                          </div>
+                        </div>
+                        <div class="ac-panel">
+                          <div class="catalog-ac__checkboxes"> 
+                            <label class="catalog-checkbox" for="vhod1">
+                              <input class="catalog-checkbox__input" type="checkbox" id="vhod1" name="vhod1"/>
+                              <div class="catalog-checkbox__box"> 
+                                <div class="catalog-checkbox__box-icon">
+                                  <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_2803_8122)">
+                                      <rect width="24" height="24" rx="8" fill="#FF9446"></rect>
+                                      <path d="M6 11.474L10.39 16L18.297 8.246" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </g>
+                                    <defs>
+                                      <clippath id="clip0_2803_8122">
+                                        <rect width="24" height="24" rx="8" fill="white"></rect>
+                                      </clippath>
+                                    </defs>
+                                  </svg>
+                                </div>
+                              </div>
+                              <div class="catalog-checkbox__title">RGB (45)</div>
+                            </label>
+                            <label class="catalog-checkbox" for="vhod2">
+                              <input class="catalog-checkbox__input" type="checkbox" id="vhod2" name="vhod2"/>
+                              <div class="catalog-checkbox__box"> 
+                                <div class="catalog-checkbox__box-icon">
+                                  <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_2803_8122)">
+                                      <rect width="24" height="24" rx="8" fill="#FF9446"></rect>
+                                      <path d="M6 11.474L10.39 16L18.297 8.246" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </g>
+                                    <defs>
+                                      <clippath id="clip0_2803_8122">
+                                        <rect width="24" height="24" rx="8" fill="white"></rect>
+                                      </clippath>
+                                    </defs>
+                                  </svg>
+                                </div>
+                              </div>
+                              <div class="catalog-checkbox__title">HDMI 1 (298)</div>
+                            </label>
+                            <label class="catalog-checkbox" for="vhod3">
+                              <input class="catalog-checkbox__input" type="checkbox" id="vhod3" name="vhod3"/>
+                              <div class="catalog-checkbox__box"> 
+                                <div class="catalog-checkbox__box-icon">
+                                  <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_2803_8122)">
+                                      <rect width="24" height="24" rx="8" fill="#FF9446"></rect>
+                                      <path d="M6 11.474L10.39 16L18.297 8.246" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </g>
+                                    <defs>
+                                      <clippath id="clip0_2803_8122">
+                                        <rect width="24" height="24" rx="8" fill="white"></rect>
+                                      </clippath>
+                                    </defs>
+                                  </svg>
+                                </div>
+                              </div>
+                              <div class="catalog-checkbox__title">HDMI 2 (94)</div>
+                            </label>
+                            <label class="catalog-checkbox" for="vhod4">
+                              <input class="catalog-checkbox__input" type="checkbox" id="vhod4" name="vhod4"/>
+                              <div class="catalog-checkbox__box"> 
+                                <div class="catalog-checkbox__box-icon">
+                                  <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_2803_8122)">
+                                      <rect width="24" height="24" rx="8" fill="#FF9446"></rect>
+                                      <path d="M6 11.474L10.39 16L18.297 8.246" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </g>
+                                    <defs>
+                                      <clippath id="clip0_2803_8122">
+                                        <rect width="24" height="24" rx="8" fill="white"></rect>
+                                      </clippath>
+                                    </defs>
+                                  </svg>
+                                </div>
+                              </div>
+                              <div class="catalog-checkbox__title">USB 2 (312)</div>
+                            </label>
+                            <label class="catalog-checkbox" for="vhod5">
+                              <input class="catalog-checkbox__input" type="checkbox" id="vhod5" name="vhod5"/>
+                              <div class="catalog-checkbox__box"> 
+                                <div class="catalog-checkbox__box-icon">
+                                  <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_2803_8122)">
+                                      <rect width="24" height="24" rx="8" fill="#FF9446"></rect>
+                                      <path d="M6 11.474L10.39 16L18.297 8.246" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </g>
+                                    <defs>
+                                      <clippath id="clip0_2803_8122">
+                                        <rect width="24" height="24" rx="8" fill="white"></rect>
+                                      </clippath>
+                                    </defs>
+                                  </svg>
+                                </div>
+                              </div>
+                              <div class="catalog-checkbox__title">HDMI 2 (94)</div>
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-container">
+                      <div class="ac catalog-ac">
+                        <div class="ac-header ac-trigger catalog-ac__header"> 
+                          <p class="catalog-ac__header-title">Выходы</p>
+                          <div class="catalog-ac__header-arrow">
+                            <svg width="24" height="28" viewbox="0 0 24 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M6 13L12 19L18 13" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                          </div>
+                        </div>
+                        <div class="ac-panel">
+                          <div class="catalog-ac__checkboxes"> 
+                            <label class="catalog-checkbox" for="vihod2">
+                              <input class="catalog-checkbox__input" type="checkbox" id="vihod2" name="vihod2"/>
+                              <div class="catalog-checkbox__box"> 
+                                <div class="catalog-checkbox__box-icon">
+                                  <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_2803_8122)">
+                                      <rect width="24" height="24" rx="8" fill="#FF9446"></rect>
+                                      <path d="M6 11.474L10.39 16L18.297 8.246" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </g>
+                                    <defs>
+                                      <clippath id="clip0_2803_8122">
+                                        <rect width="24" height="24" rx="8" fill="white"></rect>
+                                      </clippath>
+                                    </defs>
+                                  </svg>
+                                </div>
+                              </div>
+                              <div class="catalog-checkbox__title">HDMI 1 (298)</div>
+                            </label>
+                            <label class="catalog-checkbox" for="vihod3">
+                              <input class="catalog-checkbox__input" type="checkbox" id="vihod3" name="vihod3"/>
+                              <div class="catalog-checkbox__box"> 
+                                <div class="catalog-checkbox__box-icon">
+                                  <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_2803_8122)">
+                                      <rect width="24" height="24" rx="8" fill="#FF9446"></rect>
+                                      <path d="M6 11.474L10.39 16L18.297 8.246" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </g>
+                                    <defs>
+                                      <clippath id="clip0_2803_8122">
+                                        <rect width="24" height="24" rx="8" fill="white"></rect>
+                                      </clippath>
+                                    </defs>
+                                  </svg>
+                                </div>
+                              </div>
+                              <div class="catalog-checkbox__title">HDMI 3 (94)</div>
+                            </label>
+                            <label class="catalog-checkbox" for="vihod1">
+                              <input class="catalog-checkbox__input" type="checkbox" id="vihod1" name="vihod1"/>
+                              <div class="catalog-checkbox__box"> 
+                                <div class="catalog-checkbox__box-icon">
+                                  <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_2803_8122)">
+                                      <rect width="24" height="24" rx="8" fill="#FF9446"></rect>
+                                      <path d="M6 11.474L10.39 16L18.297 8.246" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </g>
+                                    <defs>
+                                      <clippath id="clip0_2803_8122">
+                                        <rect width="24" height="24" rx="8" fill="white"></rect>
+                                      </clippath>
+                                    </defs>
+                                  </svg>
+                                </div>
+                              </div>
+                              <div class="catalog-checkbox__title">RGB (45)</div>
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-container">
+                      <div class="ac catalog-ac">
+                        <div class="ac-header ac-trigger catalog-ac__header"> 
+                          <p class="catalog-ac__header-title">Встроенное ПО</p>
+                          <div class="catalog-ac__header-arrow">
+                            <svg width="24" height="28" viewbox="0 0 24 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M6 13L12 19L18 13" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                          </div>
+                        </div>
+                        <div class="ac-panel">
+                          <div class="catalog-ac__checkboxes"> 
+                            <label class="catalog-checkbox" for="vp1">
+                              <input class="catalog-checkbox__input" type="checkbox" id="vp1" name="vp1"/>
+                              <div class="catalog-checkbox__box"> 
+                                <div class="catalog-checkbox__box-icon">
+                                  <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_2803_8122)">
+                                      <rect width="24" height="24" rx="8" fill="#FF9446"></rect>
+                                      <path d="M6 11.474L10.39 16L18.297 8.246" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </g>
+                                    <defs>
+                                      <clippath id="clip0_2803_8122">
+                                        <rect width="24" height="24" rx="8" fill="white"></rect>
+                                      </clippath>
+                                    </defs>
+                                  </svg>
+                                </div>
+                              </div>
+                              <div class="catalog-checkbox__title">Да (834)</div>
+                            </label>
+                            <label class="catalog-checkbox" for="vp2">
+                              <input class="catalog-checkbox__input" type="checkbox" id="vp2" name="vp2"/>
+                              <div class="catalog-checkbox__box"> 
+                                <div class="catalog-checkbox__box-icon">
+                                  <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_2803_8122)">
+                                      <rect width="24" height="24" rx="8" fill="#FF9446"></rect>
+                                      <path d="M6 11.474L10.39 16L18.297 8.246" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </g>
+                                    <defs>
+                                      <clippath id="clip0_2803_8122">
+                                        <rect width="24" height="24" rx="8" fill="white"></rect>
+                                      </clippath>
+                                    </defs>
+                                  </svg>
+                                </div>
+                              </div>
+                              <div class="catalog-checkbox__title">Нет (12)</div>
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-container">
+                      <div class="ac catalog-ac">
+                        <div class="ac-header ac-trigger catalog-ac__header"> 
+                          <p class="catalog-ac__header-title">Цена</p>
+                          <div class="catalog-ac__header-arrow">
+                            <svg width="24" height="28" viewbox="0 0 24 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M6 13L12 19L18 13" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                          </div>
+                        </div>
+                        <div class="ac-panel">
+                          <div class="catalog-ranges" data-catalog-ranges="data-catalog-ranges"> 
+                            <div class="catalog-ranges__top"> 
+                              <div class="catalog-ranges__top-item"> 
+                                <div class="catalog-ranges__top-text">От</div>
+                                <input class="catalog-ranges__top-input" data-range="1" type="text"/>
+                              </div>
+                              <div class="catalog-ranges__top-item"> 
+                                <div class="catalog-ranges__top-text">До</div>
+                                <input class="catalog-ranges__top-input" data-range="2" type="text"/>
+                              </div>
+                            </div>
+                            <div class="catalog-ranges__slider"> 
+                              <div class="catalog-ranges__slider-track" data-ranges-track="data-ranges-track"> </div>
+                              <input class="catalog-ranges__slider-input" type="range" min="0" max="100" value="30" data-range-slider="1"/>
+                              <input class="catalog-ranges__slider-input" type="range" min="0" max="100" value="70" data-range-slider="2"/>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="catalog-list__filters-btns"> 
+                    <button class="button button-primary _small orange-gradient">Применить</button>
+                    <button class="button button-primary _small orange-100">Сбросить</button>
+                  </div>
+                </form>
+              </div>
+              <div class="catalog-list__content">
+                <div class="catalog-list__content-top">
+                  <div class="catalog-list__search"> 
+                    <div class="catalog-hero__search catalog-list__search-search"> 
+                      <input class="catalog-hero__search-input" type="text" required placeholder="Поиск по каталогу">
+                      <div class="catalog-hero__search-icon" data-search-icon>
+                        <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z" stroke="#7D7D7D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                          <path d="M21.0004 20.9999L16.6504 16.6499" stroke="#7D7D7D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="catalog-list__sort"> 
+                    <p class="catalog-list__sort-text">Сортировать по:</p>
+                    <div class="catalog-list__sort-select"> 
+                      <div class="select select-wrapper">
+                        <div class="select__button">
+                          <input type="text" readonly="readonly" required="required" value="Популярности"/>
+                          <svg width="24" height="28" viewbox="0 0 24 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 13L12 19L18 13" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                          </svg>
+                        </div>
+                        <div class="select__list">
+                          <ul>
+                            <li>
+                              <p>Популярности</p>
+                            </li>
+                            <li>
+                              <p>Возрастанию цены</p>
+                            </li>
+                            <li>
+                              <p>Убыванию цены</p>
+                            </li>
+                            <li>
+                              <p>Названию</p>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="catalog-list__pagination">
+                    <div class="catalog-list__pagination-arrow catalog-list__pagination-item">
+                      <svg width="40" height="40" viewbox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M23.1576 26L16.8418 20L23.1576 14" stroke="#454545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                    <div class="catalog-list__pagination-item catalog-list__pagination-number">1</div>
+                    <div class="catalog-list__pagination-item catalog-list__pagination-number active">2</div>
+                    <div class="catalog-list__pagination-item catalog-list__pagination-number">3</div>
+                    <div class="catalog-list__pagination-item catalog-list__pagination-number">...</div>
+                    <div class="catalog-list__pagination-item catalog-list__pagination-number">20</div>
+                    <div class="catalog-list__pagination-item catalog-list__pagination-arrow right"> 
+                      <svg width="40" height="40" viewbox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M23.1576 26L16.8418 20L23.1576 14" stroke="#454545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <div class="catalog-list__cards">
+                  <div class="catalog-card" data-catalog-card="data-catalog-card"> 
+                    <div class="catalog-card__inner"><a class="catalog-card__img" href="#">
+                        <picture class="picture">
+                          <source class="lazyload" type="image/webp" srcset="webp/catalog-card-img1.webp 1x" alt="catalog-card-img1.png"/>
+                          <source class="lazyload" srcset="images/catalog-card-img1.jpg 1x" alt="catalog-card-img1.png"/>
+                          <source class="lazyload" srcset="images/catalog-card-img1.png 1x" alt="catalog-card-img1.png"/><img class="picture__img lazyload" data-src="images/catalog-card-img1.png" alt="catalog-card-img1.png"/>
+                        </picture></a>
+                      <div class="catalog-card__content">
+                        <div class="catalog-card__content-top"> 
+                          <p class="catalog-card__content-brand">BOE</p>
+                          <p class="catalog-card__content-title">Интерактивный дисплей BOE 65&quot; P65BA-BAR</p>
+                        </div>
+                        <div class="catalog-card__content-bot">
+                          <div class="catalog-card__content-price">211 012₽</div>
+                          <div class="catalog-card__content-btn" data-catalog-cart="data-catalog-cart"> 
+                            <button class="button button-primary _small orange-100 small-mobile">Добавить в корзину</button>
+                          </div>
+                          <div class="catalog-card__content-counter catalog-card__count" data-counter-counter="data-counter-counter">
+                            <div class="catalog-card__count-btn" data-modal-btn="offer"> 
+                              <button class="button button-primary _small orange-100">Заказать</button>
+                            </div>
+                            <div class="catalog-card__count-wrapper"> 
+                              <div class="catalog-card__count-mines" data-counter-mines="data-counter-mines"> 
+                                <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M5 12H19" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                              </div>
+                              <input class="catalog-card__count-number" data-counter-input="data-counter-input" type="text" value="1"/>
+                              <div class="catalog-card__count-plus" data-counter-plus="data-counter-plus"> 
+                                <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M12 5V19" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                  <path d="M5 12H19" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="catalog-card" data-catalog-card="data-catalog-card"> 
+                    <div class="catalog-card__inner"><a class="catalog-card__img" href="#">
+                        <picture class="picture">
+                          <source class="lazyload" type="image/webp" srcset="webp/catalog-card-img2.webp 1x" alt="catalog-card-img2.png"/>
+                          <source class="lazyload" srcset="images/catalog-card-img2.jpg 1x" alt="catalog-card-img2.png"/>
+                          <source class="lazyload" srcset="images/catalog-card-img2.png 1x" alt="catalog-card-img2.png"/><img class="picture__img lazyload" data-src="images/catalog-card-img2.png" alt="catalog-card-img2.png"/>
+                        </picture></a>
+                      <div class="catalog-card__content">
+                        <div class="catalog-card__content-top"> 
+                          <p class="catalog-card__content-brand">Hikvision</p>
+                          <p class="catalog-card__content-title">Информационный дисплей BOE 50&quot; SL50AP-PBMA03</p>
+                        </div>
+                        <div class="catalog-card__content-bot">
+                          <div class="catalog-card__content-price">211 012₽</div>
+                          <div class="catalog-card__content-btn" data-catalog-cart="data-catalog-cart"> 
+                            <button class="button button-primary _small orange-100 small-mobile">Добавить в корзину</button>
+                          </div>
+                          <div class="catalog-card__content-counter catalog-card__count" data-counter-counter="data-counter-counter">
+                            <div class="catalog-card__count-btn" data-modal-btn="offer"> 
+                              <button class="button button-primary _small orange-100">Заказать</button>
+                            </div>
+                            <div class="catalog-card__count-wrapper"> 
+                              <div class="catalog-card__count-mines" data-counter-mines="data-counter-mines"> 
+                                <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M5 12H19" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                              </div>
+                              <input class="catalog-card__count-number" data-counter-input="data-counter-input" type="text" value="1"/>
+                              <div class="catalog-card__count-plus" data-counter-plus="data-counter-plus"> 
+                                <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M12 5V19" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                  <path d="M5 12H19" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="catalog-card" data-catalog-card="data-catalog-card"> 
+                    <div class="catalog-card__inner"><a class="catalog-card__img" href="#">
+                        <picture class="picture">
+                          <source class="lazyload" type="image/webp" srcset="data:image/webp;base64,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 1x" alt="catalog-card-img3.png"/>
+                          <source class="lazyload" srcset="images/catalog-card-img3.jpg 1x" alt="catalog-card-img3.png"/>
+                          <source class="lazyload" srcset="images/catalog-card-img3.png 1x" alt="catalog-card-img3.png"/><img class="picture__img lazyload" data-src="images/catalog-card-img3.png" alt="catalog-card-img3.png"/>
+                        </picture></a>
+                      <div class="catalog-card__content">
+                        <div class="catalog-card__content-top"> 
+                          <p class="catalog-card__content-brand">Barco</p>
+                          <p class="catalog-card__content-title">Установочный комплект Barco Rackmount</p>
+                        </div>
+                        <div class="catalog-card__content-bot">
+                          <div class="catalog-card__content-price">301 999₽</div>
+                          <div class="catalog-card__content-btn" data-catalog-cart="data-catalog-cart"> 
+                            <button class="button button-primary _small orange-100 small-mobile">Добавить в корзину</button>
+                          </div>
+                          <div class="catalog-card__content-counter catalog-card__count" data-counter-counter="data-counter-counter">
+                            <div class="catalog-card__count-btn" data-modal-btn="offer"> 
+                              <button class="button button-primary _small orange-100">Заказать</button>
+                            </div>
+                            <div class="catalog-card__count-wrapper"> 
+                              <div class="catalog-card__count-mines" data-counter-mines="data-counter-mines"> 
+                                <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M5 12H19" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                              </div>
+                              <input class="catalog-card__count-number" data-counter-input="data-counter-input" type="text" value="1"/>
+                              <div class="catalog-card__count-plus" data-counter-plus="data-counter-plus"> 
+                                <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M12 5V19" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                  <path d="M5 12H19" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="catalog-card" data-catalog-card="data-catalog-card"> 
+                    <div class="catalog-card__inner"><a class="catalog-card__img" href="#">
+                        <picture class="picture">
+                          <source class="lazyload" type="image/webp" srcset="data:image/webp;base64,UklGRjYPAABXRUJQVlA4ICoPAACwjQCdASr2AugBPpFGnkylo6aoIJYIuQASCWlu4XZCIrdbkCzrvz6/W31eXtP+zmeb+p73+AQ7j5af7flAZsSs198/4vsD/yz/CesX/heVf6m/9vuKfrj/zQf2jFdOXF5noCMvbRiunLi8z0BGXtoxXTlxeZ6AjL20Yrpy4vM9ARl7aMV05cXmegIy9tGK6cuLzPQEZe2jFdOXF5noCMvbRiunLi8z0BGXtoxXTlxeZ6AjL20Yrpy4vM9ARl7aMV05cXmegIy9tGK6cuLzPQEZe2jFdOXF5noCMvbRiunLi8z0BGXtoxXTlxeZ6AjL20Yrpy4vM9ARl7aMV05cXmegIy9tGK6cuLzPQEZe2jFdOXF5noCMvbRiunLi8z0BGXtnbBSyc++IiGA5etpFKvfaGAwyrUSXvwZtpFNBgOXUyPSFEoqxSgFuxeZ6AjL2sQD9/5vqAbXtmzL0+qNUgBU/tbVfgrvtDcrkXLiq/+ptIpoNhkx9Lm8hCrOQAxqhF9kS4FhQC3YvM9ARl7WYRJxcRl7a0KRpTauTUHvkPwajax5uEGgFNvTRkwDge8q1cSLf56G9ATK+65syiQUAt2LzPQEZe1kF93p9cHfUPRuiRW6TdgAZ8mckjCzXyC24iSeAsISaut1ZRsNjvJc04xOXC/3qjoTIq+U85oQol8CC9EZe2jFdOXF5nnBtCEG7XnFnS39lZlh6gJ3InvrqmxKMnIv8CfNzhdtpZg458SBG9sNRkn/U2T92kl+V8BmV0il6BKqixQPPrZrGUBBiYORXQdvDXx2G2gFuxeZ6AjL2zuA7qBesyp6mUymTpNGYDFLsP0B1qdz/nZr3mjTfnpe45yScl8ifgcp0KmTJOd/4Y3fXKZ6AjL20Yrpy4muxWoP61UIy9s8Du1S17hnS3m/sZ4D2bDTZaZ3TiAGWuEJJ8aPYpYAt2LzPQEZe2jDKRQ10qo+8gn/IF3vwYzdNuuTrboBV/GSSgKpbUX5bLK8R2Xai8CGFz47kvGRxe5tfuTNUu/9jsxSgFuxeZ6AjL20Y0Gy+9WtxLW8JGBGme3WHLe+ze042DHN1kQdMro3NhQC3YvM9ARl7aMV05Stmrgom3KWzUF39jAQqexEfnOnt5y4vM9ARl7aMV05cXmefxzYZIsqUkxuCzMqONBvOXF5noCMvbRiunLi8zz+Sm9ihmWpfiyZOv5XdRJe+mQeg4Ci3DcIKyK3YvM9ARl7aMV05cXmegI2gmyvCXmegIy9tGK6cuLzPQEZe2jFdOXF5noCMvbRiunLi8z0BGXtoxXTlxeZ6AjL20Yrpy4vM9ARl7aMV05cXmegIy9tGK6cuLzPQEZe2jFdOXF5noCMvbRiunLi8z0BGXtoxXTlxeZ6AjL20Yrpy4vM9ARl7aMV05cXmegIy9tGK6cuLzPQEZe2jFdOXF5noCMvbRiunLi8z0BGXtoxXTlxeZ6AjL20Yrpy4vM9ARl7aMV05cXmegIy9tGK6cuLzPQEZe2jFdOXF5noCMvawAAD+/7BoAAAAAAAAAAAAAAAU3u+eu6umfDtjRJHnLGSiagnTnQtHXrK5A93XBtXUyw1qfQWf9PoRlTkcEZ4M2RfWOpnAmtPN8nNe6wtKb+YjJXWLzzcdykAD+LNyGUgIJ9RdFVGjtWHY036DmOPX9c1s6gh3m/p7KjFH+ACD++WoZx/0HFV9O3VX/qvyTIrgPnwqnr3raYyCk8aj0HOuY4MAmRvEV+lUn/kDn/bSAZ004Yedd5rgDY/Wj18XsL+QfQ9yWjLqSn8X+AYDaEriHD2aEX7XiR5xkUg4SvcMx0IPxdpnbY+CO36UMla/noZ7mQsI9oCn2graeM/9wDWJquMzvUlEUcAGqKrj2r/5RRaX5PBKj7Mu7QoOz/VJFXPHcRvgp5bj3S3ZLGl6/uyhYjumF5U9uWUJDIQwI2t2/2g550g1/8qX7IOodMsPni5eFtxPKbt7T7AnyZYJ/aT9EMMq/Rx12GcCFabWU7QvEId/J6H0M+5p6o66NG7z76r9QBdefdVTzvugQP13ANdfrcy2W/Cb2H1WbzSbLM6+O+6+AbWVOsYHHeBfHTa0D9wybeN3dmTYYF/LA4/obGfNMcOCY1qZVTDnNvz3GPo/psmIGcjN2kyS0165sDu5NCRAUDXjjj4RwqLJBncdXfKWjWAE7G9icFFmm7vmSvUP2FNUC6cEJ6Ab9gqd2AHwPdvsu4hzXY24iTFeBlxoaLwLMZKm/kzUkd72UABTCvYJuQDDGwcyWvl4aJljkDBuHBhRfwIsndQCZ6wKitFO8dvybwIuQMyquAbGN6s9FmhFmyUKPJ72LZC45vkDGX8q5Gu++oCCr9m5DkTinR97Mid+rGMxsMh0YW2uLq45ULy8qOQPIMwxjkE45sQ+5uyqtvc969KFcrX+wMJElWepGahH++JYX4r9hr2yAPy9gNWep288fj93hDFmFPcevz27mYQKLvZ5PlDgzS5PKC/mJno67qYD+4w358PP3SsH3QLJp0tffNTSJBFNTkVQaf/bIeRbC87QfUOSYA5VFDe47GmRPxkjjML5ae9rslHGOUHpfawgRRWf00GxHMDsCr3mry8E5ahLOuXIcUB1/xfsu/2AE865BxtjOUQqpUCkojd29CsHXSFutrOM6VAJ+mDF302KU1RWKOHe7B9o8MgXsYYd7k3OpMCL/TIXuVEjAGT5vQ0wPFp4VEMC1lApu4QLWAXxd7qMqtOKYtd9EX7/DriSSiXZ1IRaRrP5q4VE0CMrusvf7shKgnsxomO/aMbgCbOsPHZ+uxmTblXVNE0GsgFYUs1r33G5kkNrNlxo+j+rixpIGgLlLT6pNSS1+YKzaXdUK5xeTTvS51xz+NL3TF4Lf0ZnSVLnqukAVjcz1Rv3eO8ZIPBXYezgU9F/6RZYDdlFFjMKJLedYOU1hz9JYFQrdrkuUOLND1Yxq5onWgz1Jv4LomyJU1nQYWp0KX8qbimqyWMoVbtVvMoUeubasIG2Bt8iVPD+2pGDrq5Dcmm3SqL8oFm/f1swBrdT8r9QDyZklpejAon+Wl58ewY/jE5SQNGvvn9OdbkW9CSAeD1PiL0om0sBTYu1NrbZyHQKZ8oGT/0frORgK2qeEiSTZnICniVcGo9i2IehID11d8ef/+fxG+/cSaOszvPYSBjGkk9nxcWJad+fExypZWx7NzrFrNxVCM77IT/8K+Fquqv+Frup40Rl8YvYerqPeAHKXw/Xc2hZlVk07Ntf4WLsdOtGG4KXpVkq3OO1zbGurd5W7jDPLBRoBE4qyGJupU56zkd9qsqRufE+/iT52FsL5FTFA4VgtIMoMxCg/JpQb9nB+aMxEx2geIKibAj52rwH4jeM0FCftn6Hf6lAFb1UBc1ljCfBtuC/gzF7bMAt48a49XOsPc3BDcl5+01UehknAwDIP0nwYEW4DS5Tre3VOUPup52ye0YHRdlrU1Us+r4mZOMd8g6nrm3MLBKZbv+GmT/m8m6AHdD8yHNFchWsE/j3h0GgYMDeKeLX9WMYOVYO/KPakkqxS8SrGAKM74uvoRGeAqFwVgMlRveYc1ZU2YgWGLWYnGbBFvMKGfk1CnES+gKa3nypyvY9Zj1PRjdXivWKe5aGY/5GdnLZ7nO3AtXfIYtqO5sRBzhf4Hww/Y1B98mRw7m3+0Su+gpDN3OXr9E85TEO16BFc+mPguiuZT2sXqdtitmJmSRkm3F2iIcnt4wTeKzcyxwQ5fSQDqvlGvU3ir9NtLNOTw9evP07ITfug0v6L04Nsm9ajF+ssWT06br80dDl2wc4PklC4A9KRMg15YMkyrH5i0jqHahpnVKYKGzVrYQX9r8zCxEQXzyygoHgYuN1PP7ofonvbQuz3l687FW0UP7tWRtD6CWERApi6GhbH04cMYXjd+16Yt5drACnypqZuxsrhFOhKDX3TiRnLPLQq8DzXHEFGoZGW0d2RKiXwbwYSSFZkpvcKw9EokWz3o1KuVj2AhcRCahDNsTc6Z5KtDVsaD32rmpe+mO+XKABJab2J9xUm9BsSo8keN5ZXW2VQHg5uMjqKHi5SzQulGq/abFOX2ghGs50V78r9bt092AZw7rakdDN0CSkfrKQxl04S8izeHvWqHaDdemeFnMvsNB/c4jy+uGxa+WgUCRUxq5nny0TmXHVHwkLOBKTj1hgcfdyIj4fgySArKsywS0yMTGppNvxpHIs97x/4agnPShqzTl6uskBO/l1meC9sQF3Wr1iGh2sIzgNmXxaLA5pUYdV5PEq/z0a76sqD7A5m7388LuhmXoJY02uxzCLZrZYfe/OGHFf1qaZb/nnd+Wx9rjP10wqPr42dGZrroOBLj/tNuAByh2yJ9pnrsMV3621O3CthSUIfsKx84fjShSFkAi5sSScd2NHQqzaOqm98/BneoPK+aebL1jUt44MnGojGPh1PjL8Ulrjgm4yofhLlc3JZk0ZEfbzYaoIABmCcPLpCHjw0TyVxC0nLaCweiWbju8O26lFSJWQUvwaumV1W43GjupIYjlix5O9RXtgcCPBIHqATF/OAOFk2QUNITZFnkSz97E6fx/CR8OEKOZVTI29R1WI+81qHcfOZ+OcYeMANYPmNS+VcgR12xd7QVyO8VTSmaF6lMy96o/9o1u31IBb2w1g1isS7qh8t7ruTegKa7qE7X7kzN2+qfjFRLOc/jw7MjbQZepniJnwIumCIRUWbenc71J8WUGXHu+wBsW+ubBddnq6cgNCkx8d7oWDF4F2VO3jKz1M8PkPmLaYL+X0GRdkRh9eH8wTMxt8b9v7iKVDUs7ZYSPAtuDqNQRt6YoOUY3RABUMszhw9bogj8wzVSBwRZ5M4bDnZCbr1EqiWEK6eCWi41SpHMhAP9aTw5uigsjKLsQ0Bl1jWwdFCKcPwd0h4eIGBNs6PJQ8iJlv639/zcOPNBSDhBwykDQjow8WEGnCVoyYGC0gTWiABboSVggD8/KLWR0KKB6o2DYoQsI+JrkqfbukICBgrS71AzNWSzxYqQoImx8BSoPg5F0Kb4g5vz+v1cHfrL5NpPY5vDRGdd4pSrTiHMxtOIGSrBvnR4Vg2S1DIlAwyHc16/H+6SDq8X+eS62vRDO1u+fdyK+M/bXS1cvOjuRnerAAAAAAAAAAAAAAAAAAAAAAAAA= 1x" alt="catalog-card-img4.png"/>
+                          <source class="lazyload" srcset="images/catalog-card-img4.jpg 1x" alt="catalog-card-img4.png"/>
+                          <source class="lazyload" srcset="images/catalog-card-img4.png 1x" alt="catalog-card-img4.png"/><img class="picture__img lazyload" data-src="images/catalog-card-img4.png" alt="catalog-card-img4.png"/>
+                        </picture></a>
+                      <div class="catalog-card__content">
+                        <div class="catalog-card__content-top"> 
+                          <p class="catalog-card__content-brand">BenQ</p>
+                          <p class="catalog-card__content-title">Web-камера для конференций BenQ DVY21 FHD</p>
+                        </div>
+                        <div class="catalog-card__content-bot">
+                          <div class="catalog-card__content-price">24 990₽</div>
+                          <div class="catalog-card__content-btn" data-catalog-cart="data-catalog-cart"> 
+                            <button class="button button-primary _small orange-100 small-mobile">Добавить в корзину</button>
+                          </div>
+                          <div class="catalog-card__content-counter catalog-card__count" data-counter-counter="data-counter-counter">
+                            <div class="catalog-card__count-btn" data-modal-btn="offer"> 
+                              <button class="button button-primary _small orange-100">Заказать</button>
+                            </div>
+                            <div class="catalog-card__count-wrapper"> 
+                              <div class="catalog-card__count-mines" data-counter-mines="data-counter-mines"> 
+                                <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M5 12H19" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                              </div>
+                              <input class="catalog-card__count-number" data-counter-input="data-counter-input" type="text" value="1"/>
+                              <div class="catalog-card__count-plus" data-counter-plus="data-counter-plus"> 
+                                <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M12 5V19" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                  <path d="M5 12H19" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="catalog-card" data-catalog-card="data-catalog-card"> 
+                    <div class="catalog-card__inner"><a class="catalog-card__img" href="#">
+                        <picture class="picture">
+                          <source class="lazyload" type="image/webp" srcset="webp/catalog-card-img5.webp 1x" alt="catalog-card-img5.png"/>
+                          <source class="lazyload" srcset="images/catalog-card-img5.jpg 1x" alt="catalog-card-img5.png"/>
+                          <source class="lazyload" srcset="images/catalog-card-img5.png 1x" alt="catalog-card-img5.png"/><img class="picture__img lazyload" data-src="images/catalog-card-img5.png" alt="catalog-card-img5.png"/>
+                        </picture></a>
+                      <div class="catalog-card__content">
+                        <div class="catalog-card__content-top"> 
+                          <p class="catalog-card__content-brand">Hisence</p>
+                          <p class="catalog-card__content-title">Светодиодный экран 136&quot; HAIO136</p>
+                        </div>
+                        <div class="catalog-card__content-bot">
+                          <div class="catalog-card__content-price">5 428 288₽</div>
+                          <div class="catalog-card__content-btn" data-catalog-cart="data-catalog-cart"> 
+                            <button class="button button-primary _small orange-100 small-mobile">Добавить в корзину</button>
+                          </div>
+                          <div class="catalog-card__content-counter catalog-card__count" data-counter-counter="data-counter-counter">
+                            <div class="catalog-card__count-btn" data-modal-btn="offer"> 
+                              <button class="button button-primary _small orange-100">Заказать</button>
+                            </div>
+                            <div class="catalog-card__count-wrapper"> 
+                              <div class="catalog-card__count-mines" data-counter-mines="data-counter-mines"> 
+                                <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M5 12H19" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                              </div>
+                              <input class="catalog-card__count-number" data-counter-input="data-counter-input" type="text" value="1"/>
+                              <div class="catalog-card__count-plus" data-counter-plus="data-counter-plus"> 
+                                <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M12 5V19" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                  <path d="M5 12H19" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="catalog-card" data-catalog-card="data-catalog-card"> 
+                    <div class="catalog-card__inner"><a class="catalog-card__img" href="#">
+                        <picture class="picture">
+                          <source class="lazyload" type="image/webp" srcset="webp/catalog-card-img6.webp 1x" alt="catalog-card-img6.png"/>
+                          <source class="lazyload" srcset="images/catalog-card-img6.jpg 1x" alt="catalog-card-img6.png"/>
+                          <source class="lazyload" srcset="images/catalog-card-img6.png 1x" alt="catalog-card-img6.png"/><img class="picture__img lazyload" data-src="images/catalog-card-img6.png" alt="catalog-card-img6.png"/>
+                        </picture></a>
+                      <div class="catalog-card__content">
+                        <div class="catalog-card__content-top"> 
+                          <p class="catalog-card__content-brand">Hisence</p>
+                          <p class="catalog-card__content-title">Светодиодный экран 138&quot; HAIO138</p>
+                        </div>
+                        <div class="catalog-card__content-bot">
+                          <div class="catalog-card__content-price">7 866 682₽</div>
+                          <div class="catalog-card__content-btn" data-catalog-cart="data-catalog-cart"> 
+                            <button class="button button-primary _small orange-100 small-mobile">Добавить в корзину</button>
+                          </div>
+                          <div class="catalog-card__content-counter catalog-card__count" data-counter-counter="data-counter-counter">
+                            <div class="catalog-card__count-btn" data-modal-btn="offer"> 
+                              <button class="button button-primary _small orange-100">Заказать</button>
+                            </div>
+                            <div class="catalog-card__count-wrapper"> 
+                              <div class="catalog-card__count-mines" data-counter-mines="data-counter-mines"> 
+                                <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M5 12H19" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                              </div>
+                              <input class="catalog-card__count-number" data-counter-input="data-counter-input" type="text" value="1"/>
+                              <div class="catalog-card__count-plus" data-counter-plus="data-counter-plus"> 
+                                <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M12 5V19" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                  <path d="M5 12H19" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="catalog-card" data-catalog-card="data-catalog-card"> 
+                    <div class="catalog-card__inner"><a class="catalog-card__img" href="#">
+                        <picture class="picture">
+                          <source class="lazyload" type="image/webp" srcset="webp/catalog-card-img7.webp 1x" alt="catalog-card-img7.png"/>
+                          <source class="lazyload" srcset="images/catalog-card-img7.jpg 1x" alt="catalog-card-img7.png"/>
+                          <source class="lazyload" srcset="images/catalog-card-img7.png 1x" alt="catalog-card-img7.png"/><img class="picture__img lazyload" data-src="images/catalog-card-img7.png" alt="catalog-card-img7.png"/>
+                        </picture></a>
+                      <div class="catalog-card__content">
+                        <div class="catalog-card__content-top"> 
+                          <p class="catalog-card__content-brand">Panasonic</p>
+                          <p class="catalog-card__content-title">Проектор Panasonic PT-JW130GWE</p>
+                        </div>
+                        <div class="catalog-card__content-bot">
+                          <div class="catalog-card__content-price">198 500₽</div>
+                          <div class="catalog-card__content-btn" data-catalog-cart="data-catalog-cart"> 
+                            <button class="button button-primary _small orange-100 small-mobile">Добавить в корзину</button>
+                          </div>
+                          <div class="catalog-card__content-counter catalog-card__count" data-counter-counter="data-counter-counter">
+                            <div class="catalog-card__count-btn" data-modal-btn="offer"> 
+                              <button class="button button-primary _small orange-100">Заказать</button>
+                            </div>
+                            <div class="catalog-card__count-wrapper"> 
+                              <div class="catalog-card__count-mines" data-counter-mines="data-counter-mines"> 
+                                <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M5 12H19" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                              </div>
+                              <input class="catalog-card__count-number" data-counter-input="data-counter-input" type="text" value="1"/>
+                              <div class="catalog-card__count-plus" data-counter-plus="data-counter-plus"> 
+                                <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M12 5V19" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                  <path d="M5 12H19" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="catalog-card" data-catalog-card="data-catalog-card"> 
+                    <div class="catalog-card__inner"><a class="catalog-card__img" href="#">
+                        <picture class="picture">
+                          <source class="lazyload" type="image/webp" srcset="webp/catalog-card-img8.webp 1x" alt="catalog-card-img8.png"/>
+                          <source class="lazyload" srcset="images/catalog-card-img8.jpg 1x" alt="catalog-card-img8.png"/>
+                          <source class="lazyload" srcset="images/catalog-card-img8.png 1x" alt="catalog-card-img8.png"/><img class="picture__img lazyload" data-src="images/catalog-card-img8.png" alt="catalog-card-img8.png"/>
+                        </picture></a>
+                      <div class="catalog-card__content">
+                        <div class="catalog-card__content-top"> 
+                          <p class="catalog-card__content-brand">Panasonic</p>
+                          <p class="catalog-card__content-title">Проектор Panasonic PT-EX620LE</p>
+                        </div>
+                        <div class="catalog-card__content-bot">
+                          <div class="catalog-card__content-price">280 000₽</div>
+                          <div class="catalog-card__content-btn" data-catalog-cart="data-catalog-cart"> 
+                            <button class="button button-primary _small orange-100 small-mobile">Добавить в корзину</button>
+                          </div>
+                          <div class="catalog-card__content-counter catalog-card__count" data-counter-counter="data-counter-counter">
+                            <div class="catalog-card__count-btn" data-modal-btn="offer"> 
+                              <button class="button button-primary _small orange-100">Заказать</button>
+                            </div>
+                            <div class="catalog-card__count-wrapper"> 
+                              <div class="catalog-card__count-mines" data-counter-mines="data-counter-mines"> 
+                                <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M5 12H19" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                              </div>
+                              <input class="catalog-card__count-number" data-counter-input="data-counter-input" type="text" value="1"/>
+                              <div class="catalog-card__count-plus" data-counter-plus="data-counter-plus"> 
+                                <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M12 5V19" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                  <path d="M5 12H19" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="catalog-card" data-catalog-card="data-catalog-card"> 
+                    <div class="catalog-card__inner"><a class="catalog-card__img" href="#">
+                        <picture class="picture">
+                          <source class="lazyload" type="image/webp" srcset="data:image/webp;base64,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 1x" alt="catalog-card-img3.png"/>
+                          <source class="lazyload" srcset="images/catalog-card-img3.jpg 1x" alt="catalog-card-img3.png"/>
+                          <source class="lazyload" srcset="images/catalog-card-img3.png 1x" alt="catalog-card-img3.png"/><img class="picture__img lazyload" data-src="images/catalog-card-img3.png" alt="catalog-card-img3.png"/>
+                        </picture></a>
+                      <div class="catalog-card__content">
+                        <div class="catalog-card__content-top"> 
+                          <p class="catalog-card__content-brand">Panasonic</p>
+                          <p class="catalog-card__content-title">Проектор Panasonic PT-EX620LE</p>
+                        </div>
+                        <div class="catalog-card__content-bot">
+                          <div class="catalog-card__content-price">280 000₽</div>
+                          <div class="catalog-card__content-btn" data-catalog-cart="data-catalog-cart"> 
+                            <button class="button button-primary _small orange-100 small-mobile">Добавить в корзину</button>
+                          </div>
+                          <div class="catalog-card__content-counter catalog-card__count" data-counter-counter="data-counter-counter">
+                            <div class="catalog-card__count-btn" data-modal-btn="offer"> 
+                              <button class="button button-primary _small orange-100">Заказать</button>
+                            </div>
+                            <div class="catalog-card__count-wrapper"> 
+                              <div class="catalog-card__count-mines" data-counter-mines="data-counter-mines"> 
+                                <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M5 12H19" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                              </div>
+                              <input class="catalog-card__count-number" data-counter-input="data-counter-input" type="text" value="1"/>
+                              <div class="catalog-card__count-plus" data-counter-plus="data-counter-plus"> 
+                                <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M12 5V19" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                  <path d="M5 12H19" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="catalog-card" data-catalog-card="data-catalog-card"> 
+                    <div class="catalog-card__inner"><a class="catalog-card__img" href="#">
+                        <picture class="picture">
+                          <source class="lazyload" type="image/webp" srcset="webp/catalog-card-img2.webp 1x" alt="catalog-card-img2.png"/>
+                          <source class="lazyload" srcset="images/catalog-card-img2.jpg 1x" alt="catalog-card-img2.png"/>
+                          <source class="lazyload" srcset="images/catalog-card-img2.png 1x" alt="catalog-card-img2.png"/><img class="picture__img lazyload" data-src="images/catalog-card-img2.png" alt="catalog-card-img2.png"/>
+                        </picture></a>
+                      <div class="catalog-card__content">
+                        <div class="catalog-card__content-top"> 
+                          <p class="catalog-card__content-brand">Panasonic</p>
+                          <p class="catalog-card__content-title">Проектор Panasonic PT-EX620LE</p>
+                        </div>
+                        <div class="catalog-card__content-bot">
+                          <div class="catalog-card__content-price">280 000₽</div>
+                          <div class="catalog-card__content-btn" data-catalog-cart="data-catalog-cart"> 
+                            <button class="button button-primary _small orange-100 small-mobile">Добавить в корзину</button>
+                          </div>
+                          <div class="catalog-card__content-counter catalog-card__count" data-counter-counter="data-counter-counter">
+                            <div class="catalog-card__count-btn" data-modal-btn="offer"> 
+                              <button class="button button-primary _small orange-100">Заказать</button>
+                            </div>
+                            <div class="catalog-card__count-wrapper"> 
+                              <div class="catalog-card__count-mines" data-counter-mines="data-counter-mines"> 
+                                <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M5 12H19" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                              </div>
+                              <input class="catalog-card__count-number" data-counter-input="data-counter-input" type="text" value="1"/>
+                              <div class="catalog-card__count-plus" data-counter-plus="data-counter-plus"> 
+                                <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M12 5V19" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                  <path d="M5 12H19" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="catalog-card" data-catalog-card="data-catalog-card"> 
+                    <div class="catalog-card__inner"><a class="catalog-card__img" href="#">
+                        <picture class="picture">
+                          <source class="lazyload" type="image/webp" srcset="webp/catalog-card-img1.webp 1x" alt="catalog-card-img1.png"/>
+                          <source class="lazyload" srcset="images/catalog-card-img1.jpg 1x" alt="catalog-card-img1.png"/>
+                          <source class="lazyload" srcset="images/catalog-card-img1.png 1x" alt="catalog-card-img1.png"/><img class="picture__img lazyload" data-src="images/catalog-card-img1.png" alt="catalog-card-img1.png"/>
+                        </picture></a>
+                      <div class="catalog-card__content">
+                        <div class="catalog-card__content-top"> 
+                          <p class="catalog-card__content-brand">Panasonic</p>
+                          <p class="catalog-card__content-title">Проектор Panasonic PT-EX620LE</p>
+                        </div>
+                        <div class="catalog-card__content-bot">
+                          <div class="catalog-card__content-price">280 000₽</div>
+                          <div class="catalog-card__content-btn" data-catalog-cart="data-catalog-cart"> 
+                            <button class="button button-primary _small orange-100 small-mobile">Добавить в корзину</button>
+                          </div>
+                          <div class="catalog-card__content-counter catalog-card__count" data-counter-counter="data-counter-counter">
+                            <div class="catalog-card__count-btn" data-modal-btn="offer"> 
+                              <button class="button button-primary _small orange-100">Заказать</button>
+                            </div>
+                            <div class="catalog-card__count-wrapper"> 
+                              <div class="catalog-card__count-mines" data-counter-mines="data-counter-mines"> 
+                                <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M5 12H19" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                              </div>
+                              <input class="catalog-card__count-number" data-counter-input="data-counter-input" type="text" value="1"/>
+                              <div class="catalog-card__count-plus" data-counter-plus="data-counter-plus"> 
+                                <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M12 5V19" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                  <path d="M5 12H19" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="catalog-card" data-catalog-card="data-catalog-card"> 
+                    <div class="catalog-card__inner"><a class="catalog-card__img" href="#">
+                        <picture class="picture">
+                          <source class="lazyload" type="image/webp" srcset="webp/catalog-card-img8.webp 1x" alt="catalog-card-img8.png"/>
+                          <source class="lazyload" srcset="images/catalog-card-img8.jpg 1x" alt="catalog-card-img8.png"/>
+                          <source class="lazyload" srcset="images/catalog-card-img8.png 1x" alt="catalog-card-img8.png"/><img class="picture__img lazyload" data-src="images/catalog-card-img8.png" alt="catalog-card-img8.png"/>
+                        </picture></a>
+                      <div class="catalog-card__content">
+                        <div class="catalog-card__content-top"> 
+                          <p class="catalog-card__content-brand">Panasonic</p>
+                          <p class="catalog-card__content-title">Проектор Panasonic PT-EX620LE</p>
+                        </div>
+                        <div class="catalog-card__content-bot">
+                          <div class="catalog-card__content-price">280 000₽</div>
+                          <div class="catalog-card__content-btn" data-catalog-cart="data-catalog-cart"> 
+                            <button class="button button-primary _small orange-100 small-mobile">Добавить в корзину</button>
+                          </div>
+                          <div class="catalog-card__content-counter catalog-card__count" data-counter-counter="data-counter-counter">
+                            <div class="catalog-card__count-btn" data-modal-btn="offer"> 
+                              <button class="button button-primary _small orange-100">Заказать</button>
+                            </div>
+                            <div class="catalog-card__count-wrapper"> 
+                              <div class="catalog-card__count-mines" data-counter-mines="data-counter-mines"> 
+                                <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M5 12H19" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                              </div>
+                              <input class="catalog-card__count-number" data-counter-input="data-counter-input" type="text" value="1"/>
+                              <div class="catalog-card__count-plus" data-counter-plus="data-counter-plus"> 
+                                <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M12 5V19" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                  <path d="M5 12H19" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="catalog-list__bot-pagination"> 
+                  <div class="catalog-list__pagination">
+                    <div class="catalog-list__pagination-arrow catalog-list__pagination-item">
+                      <svg width="40" height="40" viewbox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M23.1576 26L16.8418 20L23.1576 14" stroke="#454545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                    <div class="catalog-list__pagination-item catalog-list__pagination-number">1</div>
+                    <div class="catalog-list__pagination-item catalog-list__pagination-number active">2</div>
+                    <div class="catalog-list__pagination-item catalog-list__pagination-number">3</div>
+                    <div class="catalog-list__pagination-item catalog-list__pagination-number">...</div>
+                    <div class="catalog-list__pagination-item catalog-list__pagination-number">20</div>
+                    <div class="catalog-list__pagination-item catalog-list__pagination-arrow right"> 
+                      <svg width="40" height="40" viewbox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M23.1576 26L16.8418 20L23.1576 14" stroke="#454545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <div class="footer">
+        <div class="footer-inner"> 
+          <div class="footer-about"> 
+            <div class="footer-about__logo"> 
+              <svg width="200" height="87" viewbox="0 0 200 87" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <rect width="200" height="86.758" fill="url(#pattern0)"></rect>
+                <defs>
+                  <pattern id="pattern0" patterncontentunits="objectBoundingBox" width="1" height="1">
+                    <use xlink:href="#image0_2408_1956" transform="matrix(0.00466441 0 0 0.0107527 -0.00375606 0)"></use>
+                  </pattern>
+                  <image id="image0_2408_1956" width="216" height="93" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANgAAABdCAYAAADHXaiGAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAABARpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQ1IDc5LjE2MzQ5OSwgMjAxOC8wOC8xMy0xNjo0MDoyMiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSJ1dWlkOjlFM0U1QzlBOEM4MURCMTE4NzM0REI1OEZEREU0QkE3IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjlCNThEMDRCODhDMjExRUNCRjc1OUMwNDQyNjc2NkYxIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjlCNThEMDRBODhDMjExRUNCRjc1OUMwNDQyNjc2NkYxIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIElsbHVzdHJhdG9yIENDIDIwMTcgKFdpbmRvd3MpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6ZmRkNmY2ZTctMTdmMS00ZTQ3LWE1NDctMzMyOWRmMjNlNTk1IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOmZkZDZmNmU3LTE3ZjEtNGU0Ny1hNTQ3LTMzMjlkZjIzZTU5NSIvPiA8ZGM6dGl0bGU+IDxyZGY6QWx0PiA8cmRmOmxpIHhtbDpsYW5nPSJ4LWRlZmF1bHQiPtCe0YHQvdC+0LLQvdGL0LUgUkdCPC9yZGY6bGk+IDwvcmRmOkFsdD4gPC9kYzp0aXRsZT4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5uywWTAAAPuklEQVR42uxdCZgU1RGunpk92ZVLkUuQlTOAGr6oGI2KxgONosYzfjEkGg345Uuinzk+PyMRgwdRowQjX4xHQkw0HhhEUBKMAUUEI0e4FnG5WVhYll12l92d6U5Vd80yO9vd0z3bM9MzUz8Uu/R0v3n9uv73qurVe63UThm+GwD6ozSAIJtRhtKGMhal0u3FCkpQDcP8A8Vwy+sb+YgqrdpFhFDK+fdyaY6sRyFKIFlyLTpI5NqsF1GImtEalgbtKgLSBPmNKLnerS2GG17bbLBUJ1dEGsejEUyQ7+TCket6IZeMYALvybXggJBLCCZIGblufl3IJQQTCLmEYAIhl0AIlufkmldTIuQSgglSRa5b39gk5BKCCYRcQjBBlpDr7/uKhVxCMEGqyHXbPPG5hGCCFJJLE3IJwQReUMucXIqQK0NwnYuo4SMMggoBRZYy+BIRDf5aXQx3viXkykqCHWOaxsaIwB/Q9OVbc/cWw9R/CLmylmAFWhs8s6MEHv9oBwzsVS4k84utj48hFAjAii3bXsX/HkZyFWYxuSpQnkJ5KP9GMOwot9aHoaauFWWfaLb/RrKxhaFALoxcFflpImJPWV5Ao1aEReA3iFnoI8tCmkAg8NMIZuaXBQPQFhG++sRERF9MpWAiaHogSpD1BCNyDTj+OLhuTF9Q8ZmGJYKfflMErfaeRQq8urF2duWug1uDgUh3Fe15n5OMNIV2M5uCMkwIZuOY9S4rgekjWtv9NEFGBi+4d2jZ786YD5sqd9VCMBCGLCAZ4UIhmNNuFP+GtaAoeyagKBDS2mDllWWAJIMsIlnOdsniNOXYENamFICCZFqFJBs+sBdE1JDR7yliVgjBBB4MBQbJII5kCgjJhGCClJBs1KDjQdWEZEIwQUpItuKKEiZZEH0yIZhvCUaZ9BSpCoJm+kD1DyWE6CuShXWSAayYWAKXnzYIwhF5PukERRFnovREaUpErpCRGrV/b7M6CY9cGPtp/dFwdYuqPFOkqAFNCRYoIJOcaQa9+IHmlQ5G6RXE56VoxqTkIa0QzcNW7gQF6STYdCcjF5FLUVWY+UURzP14c2EswRRFg6rqQ3uvW9pt+vzzglAAbfinAIRk6Uf7ej3NeDXK4tpSeHpdA3ywcYv+/4IgcNaNIF0Ec0yuJ6uKYPpi/UEFQkEFzY1YAkXggw174AqtPyw4H0mmeEsysmX1RZ6alqAXDujzQREt2W/mnr8r9VYMy1vTl2ilvpvp0DY83/XPQ6Uw87PDsLzy2Lu+ggEil3R6viFYR3IVwwPvVeoPKoS9YDhyLB+KJjEpOqVpbbB0I5IMkidZew8MaruyxOKoGoL6SAAa0JdoDCvRuW04LqRBOUqPUBtWEZWpI2ew3ADeSdCGnDEmFUXadJIkqYyaMUQour/a6Wv0ssNasvElfCYKjk6qZvYRfFJfAtM+bYBlmzbxQYNYETw/Iils/iEYKXqBEqEnY0suL0hG3xXAf0nBo6RqwaqtqCuEtXUqfNEQgT1H2uBgcxtU19VBXWMTNLVguTHLMkqLCqFbcSH06VEGfcqKoU9pCAaVF8CYHgEY31OFfoVYok4e/S70MUrhoMwxYgG8VVMKs9bWwZ5DR/TyXPEKiwsg43uVFukcLcbG6l4UhN7FQejfLQjDyxUY10OFAZZ1SUAsCLe3z4bmEvjoAMCmw2HYjW1zoBHbp7EZPt+znVkcEWL5lWCx5CKfa/pie3JZkexStT+8O8GaZFFihejNp/hRg1oA86pDMH97E3y6bQ/UHG6KdvntV3QcVY6NAk0tYV1qDjfD+vahAtjvV+GsYSfBNyrK4caTVOgbajWupOGPRgL88faBUnh45QFYt31HzHXJx+86/x6tuwqnD+kPl1R0h8mDAQYi2aguqmJFNCaWqrMXZm8vhrnrD8L6Hdss2gbbk813IZYPCdaZXFsckcuMZMs3I8mgM8niiVUdLoRHN2jw8qqt0NwKMQquQdffE6zoRFyxZQ+KAvejGt945lD41VgcVQpbYQESa0Y7sTTu+RW95/ceRl1WV+1D2Q+PUV3OOAWmnVoAA0ItBt/biQYxxFJgzi5jm4bqQ80dyGqGsPhZ/iRYV8nlhGQRJFmUWDVIrOnrVXhxOW3SEmxXcONaUyUZCsZLvrHvh74ovfke6lFqUOiF7lTp1ShHYnv2Y2UG4JVPqmD+2iCM6NcLPqva3h6kMYilm1W98MBoFLdx7ehw0oJSh7KXf4f4uuhhB02BV1ZuQ1HhpjNPgQfGhmBAQcuxcRnPe3ZnCTz58U7YW9vU3j4BHMnUzh0AZaOPQRmEciIK3UMRGNMvaExCNQrd7P9QdmSxztJWAiehNKfxO4tZvza6vrJ2ynBdDk4ZAfVTh0L9nRVw/8WjWG8DSC5TZ/ynHWwSQ/7bSdva03IK4JyRg6H+BxV6+VtvHwmTzx7OJp7xPaTcFmk841CeYQXRHAo5Z0tQbmEl61AnI5shwKRWzLIbrnPxXXZyGGUNyiyUS/SGsKyL0Q63jh8GVdg+cyaNhn69uvNxI1RCxDJRtiddtg3JTpTZKGf5hDRvm9TxeYtz53r0bNzK0qTuLJ5cv7goIbkcE6wjyUJw8dghcM+EkdzRJyTWtShVHjQMTQg9AiYBPRt8M0UPiXrdJ1C62RNN4epaEusElEUe1Yl2Lvp+FhHsz1lFsCTI5YpgUQUyKBR0QqwK7vW9biAylS532CzXpuGB3WrdGQV0kpkQizAxRfWhUXCAEMxbggWiPtfDnxfBw/9Kzudy4pNp7OcYA4qqBxFM/KzbUbainOq0aHC+tVUJygKUR31iFr3EZlqHdooN8Khqp2dwFco7DtpkPwo5tuvZJz3s0B9vyAIfLFMJ6kklcYaIXNO3FMHMJakhlws8jnJ3gnNWobyJspYddgoktIGRh0cBjyEoZ6DchHKyzehL51zosn4USPkRK2s3G+VW+PO+HCi5DKXc4vyp/PMuB99PwYuXLT5rRJnD5NvIo1HsQyQ/dCDKl1DO5vYZElfGbL5Hv4P88eX87BOhgc3pWRyoiMWDKMs4IJQI5dzxu8fduk/kyCxM2kR0gMcSDM/k2I50Weal3IOblbcqCRNxb3yQwiHomqtRNrgxF03wgsW1r3EH4xbnxPlxg7PEB3OLcu444ss/O033FnRLLq8JdqeN4lXyKNAV3BtX5ptJ+mD7klTkWPzG4j5324yKwL5Ri8l1L3igADdzbw55RrCvps20TGIRnlcEG21Drlc9vMkJXObCLgQ5vCBY1BQ2u9+pNtfcZnI+zct0h9xAzhIsQN+VmqwFR3jaJlJ0g4ff8z7K6Sjf9YEy3YOyzoLUVhhlcmyhw+CFIA8jMsB+iVmg4UOHPolbrGHn3w8wM+0uAOsweS+TY7tEfYVgiXryeNBQ+r08aPfFFs6w1RtFzKYieov6CsGs8GWUc02OP8GBjVxHJft08bAKGZudS1HSkKiwEMwMl5kco/ms3+ZJu1MScaPJ8WKL81ebHKOw+hxRYSGYGa4wOfZeHvkVIQsytVqcT1MLZhnwZE7/B4xJbYEQTEcZGBkFTvySXAX5Wv1Nju+38cFmWXz2NTAmwd9C+Tp4M5UgyGKCUcpOT5PjH+ZRu1ulaVXZXEOT1PNtPr+KOylKD6IQPqVffQWSyz4ReGiqpBsnWPhf+RR2/o7JMcrW3p7guqvYXLza5pxC9nGjfi4R7lM2JSmtap2ofW6PYGYpQY2QHZncXoCyYMabHJ/n8PprmKAtDs+nTIYLUH4JRpI0zQVSwuwwUf/cJJhZXlaizQ5zBZQOZbZchjLDX3RRzp/Yl6XytrmsA00F0BslK3nUHCE0yC0T0WyL7lJWmCYft5XahU6A9kd4FoycSDPch1LrskxaWPd7FsrpnARGutU4cL52ieYiaQPF+1EeSnAuraercNkOpF9HUT4XgqUPB0yO0XqlfmAdRfMDKKx+ERPBan1XdD1YGd/PKA5ojLEp9yU22bqC9SwzUHqwCUoBjvPYPEwU6KDt02lezW7rACLusiTqtpvLjgjB0oPd7G/FKykpxBoftxUp7kKPy/wbymSPyyRzcxFL1Ac7l4Me3wbzCC6BVpPTjlNPiWGX3T4YKcAWk+OX5Fnb/wSMtVipRjRsT6uxjwdjcvqgjalaLrTIboIR3rMgWI8cb28Kw1M62CDITFoY+U+UyT/AwtyjKZRvefydef1Cskwli9LeET83McFodfOjOdzeb/LIlWlQiP9KMDbG6RP32ZlgnuO4jn3QCDjfbpnm5I5A17dnFoK5xFK29+Od/5+h/AHcR9TSZdrSOrVDHMSw663p3mgV8gNxn/8YjGyLd3xyP8+bdHSDLM6nVcFLxOjLDoIBm0jPxR0jB5zC2Tf4sK2OcuCgzeH503g0mBh3nO55NBM10/jC5JikVuWAD0b4Ixg7LcXjejDmZbxGvy468IEk/Ik7oHOGSj/uRPwAs6yaI0KL3CAY4YcWxx8Eb3c6oi3f9kDcRp9pwC72K+NBI/QUl5YGzZWN97h+F5kc2yK0yDy83LZtBljvLEW7DRV1sa7xO0TNTuKaru4q9ZzF/Tndku4ycLeHohNcY1GnqzOgT7m8bVvGCUZ4w4ZkFPG6Jwl/kXaufdeizEVpJlgBjwzxZS53eP186LxfZFeIYPX2mExN9AvBUkwwwgKw392XgguU5Eo5d/SesPgVwWU8IkwGY2mGXVlr0kwwwgSLuiTKAZxkcx8N7M9NZN/ODrQzFS13+cimvOuFYLlLMMJT4O7dW5RESnux00LFRofX/SUDJmKsb2lWp0ttrjnfRZvQtgJLecSjtV+0yvl9Hj0jCa59JIP6JARLE8EItF9HE6TmFTR3OaxDKnf2NRtdd4J9hJM+WwipezXPrzOsT7m8s6/vsIAbZYaHZVJPfqKLKGIq03tuh85zaQPBPnTfwGYgvbBgpYd1qWHT9T6J2+UPwYDNmWji6R2Q3MvPtrF/cwoHBPZ3sV0Uj4hHAQqzfegpB3Bagms/BmPymqYdaIXyZ0nWYQn7W5Qm9W8fPO9grup+sgpDJmJ8ziA97HEprGs/7sEpkHEyGJnh3bihKMuCMiN2swJ/Asby+GRxMgcEjrA5UcLlvwLe5dVRJK8v+44Rvj/Kcn/OZTk0+tFSH1qZPJhJU87mbBuXX8P+GU3sfwjmG5lmEhfzc43utd+Tn+EyD8qmCO6N3CZHmcx07HXw8frDVPpgAoGYiAKBQAgmEAjBBAIhmEAgEIIJBEIwgUAIJhAIhGACgRBMIBCCCQQCIZhAkD3wcts2Srw9DYxkymJpWkGegxKKj3pJMHpFz2ppV4GgHQ1iIgoE4oMJBEIwgUAQh2R9sFb+GV3xKxAIOoJWUDf8X4ABAMz5n/EQB9ioAAAAAElFTkSuQmCC"></image>
+                </defs>
+              </svg>
+            </div>
+            <p class="footer-about__text">Проектирование и внедрение IT-решений для&nbsp;компаний ТЭК и государственного сектора</p>
+          </div>
+          <div class="footer-content">
+            <div class="footer-content__contacts">
+              <div class="footer-content__contacts-title title-primary">Контакты</div>
+              <div class="footer-content__contacts-items">
+                <div class="footer-content__contacts-row">
+                  <div class="footer-content__contacts-item"> 
+                    <div class="footer-content__contacts-icon"> 
+                      <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M21 10C21 17 12 23 12 23C12 23 3 17 3 10C3 7.61305 3.94821 5.32387 5.63604 3.63604C7.32387 1.94821 9.61305 1 12 1C14.3869 1 16.6761 1.94821 18.364 3.63604C20.0518 5.32387 21 7.61305 21 10Z" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <path d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13Z" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                    <p class="footer-content__contacts-text">Москва, Каргопольская 6</p>
+                  </div>
+                </div>
+                <div class="footer-content__contacts-row"><a class="footer-content__contacts-item _hover" href="tel:+74951981492">
+                    <div class="footer-content__contacts-icon"> 
+                      <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M22 16.9201V19.9201C22.0011 20.1986 21.9441 20.4743 21.8325 20.7294C21.7209 20.9846 21.5573 21.2137 21.3521 21.402C21.1468 21.5902 20.9046 21.7336 20.6407 21.8228C20.3769 21.912 20.0974 21.9452 19.82 21.9201C16.7428 21.5857 13.787 20.5342 11.19 18.8501C8.77382 17.3148 6.72533 15.2663 5.18999 12.8501C3.49997 10.2413 2.44824 7.27109 2.11999 4.1801C2.095 3.90356 2.12787 3.62486 2.21649 3.36172C2.30512 3.09859 2.44756 2.85679 2.63476 2.65172C2.82196 2.44665 3.0498 2.28281 3.30379 2.17062C3.55777 2.05843 3.83233 2.00036 4.10999 2.0001H7.10999C7.5953 1.99532 8.06579 2.16718 8.43376 2.48363C8.80173 2.80008 9.04207 3.23954 9.10999 3.7201C9.23662 4.68016 9.47144 5.62282 9.80999 6.5301C9.94454 6.88802 9.97366 7.27701 9.8939 7.65098C9.81415 8.02494 9.62886 8.36821 9.35999 8.6401L8.08999 9.9101C9.51355 12.4136 11.5864 14.4865 14.09 15.9101L15.36 14.6401C15.6319 14.3712 15.9751 14.1859 16.3491 14.1062C16.7231 14.0264 17.1121 14.0556 17.47 14.1901C18.3773 14.5286 19.3199 14.7635 20.28 14.8901C20.7658 14.9586 21.2094 15.2033 21.5265 15.5776C21.8437 15.9519 22.0122 16.4297 22 16.9201Z" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                    <div class="footer-content__contacts-text">+7 (495)-198-14-92 </div></a></div>
+                <div class="footer-content__contacts-row">
+                  <div class="footer-content__contacts-item">
+                    <div class="footer-content__contacts-icon"> 
+                      <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <path d="M12 6V12L16 14" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                    <p class="footer-content__contacts-text">пн - пт 9:00 - 18:00</p>
+                  </div>
+                </div>
+                <div class="footer-content__contacts-row"><a class="footer-content__contacts-item _hover" href="mailto:info@crs-it.ru">
+                    <div class="footer-content__contacts-icon"> 
+                      <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <path d="M22 6L12 13L2 6" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                    <div class="footer-content__contacts-text">info@crs-it.ru</div></a></div>
+              </div>
+            </div>
+            <nav class="footer-content__nav">
+              <div class="footer-content__nav-title title-primary">Меню</div>
+              <ul class="footer-content__nav-list"> 
+                <li class="footer-content__nav-item"> <a class="footer-content__nav-link" href="#">Каталог</a></li>
+                <li class="footer-content__nav-item"> <a class="footer-content__nav-link" href="#">О нас</a></li>
+                <li class="footer-content__nav-item"> <a class="footer-content__nav-link" href="#">Услуги</a></li>
+                <li class="footer-content__nav-item"> <a class="footer-content__nav-link" href="#">Партнёрам</a></li>
+                <li class="footer-content__nav-item"> <a class="footer-content__nav-link" href="#">Контакты</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </body>
+</html>
