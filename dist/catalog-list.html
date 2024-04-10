@@ -9,7 +9,7 @@
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <meta content="ie=edge" http-equiv="x-ua-compatible">
     <link href="https://vitejs.dev/logo.svg" rel="icon" type="image/x-icon">
-    <script type="module" crossorigin src="assets/index-33c53a86.js"></script>
+    <script type="module" crossorigin src="assets/index-485f4a81.js"></script>
     <link rel="stylesheet" href="styles/index.css">
   </head>
   <body>
@@ -385,7 +385,15 @@
           <div class="catalog-list__inner">
             <div class="catalog-list__title title-primary">Дисплеи</div>
             <div class="catalog-list__row"> 
-              <div class="catalog-list__filters"> 
+              <div class="catalog-list__filters" data-modal="filters"> 
+                <div class="catalog-list__filters-back catalog-list__back" data-filters-back data-modal-close="filters">
+                  <div class="catalog-list__back-arrow"> 
+                    <svg width="40" height="40" viewbox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M23.1576 26L16.8418 20L23.1576 14" stroke="#454545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                  </div>
+                  <p class="catalog-list__back-text">Назад</p>
+                </div>
                 <form class="catalog-list__filters-inner catalog-list__filters-form"> 
                   <div class="catalog-list__filters-accords"> 
                     <div class="accordion-container">
@@ -1089,8 +1097,8 @@
                     </div>
                   </div>
                   <div class="catalog-list__filters-btns"> 
-                    <button class="button button-primary _small orange-gradient">Применить</button>
-                    <button class="button button-primary _small orange-100">Сбросить</button>
+                    <button class="button button-primary _small orange-gradient small-mobile">Применить</button>
+                    <button class="button button-primary _small orange-100 small-mobile">Сбросить</button>
                   </div>
                 </form>
               </div>
@@ -1135,8 +1143,13 @@
                         </div>
                       </div>
                     </div>
+                    <div class="catalog-list__sort-filter mobile" data-modal-btn="filters" data-no-overlay> 
+                      <svg width="40" height="40" viewbox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M29 11H11L18.0002 20.46V26L22.0002 29V20.46L29 11Z" stroke="#454545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="catalog-list__pagination">
+                  <div class="catalog-list__pagination desktop">
                     <div class="catalog-list__pagination-arrow catalog-list__pagination-item">
                       <svg width="40" height="40" viewbox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M23.1576 26L16.8418 20L23.1576 14" stroke="#454545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -1174,7 +1187,7 @@
                           </div>
                           <div class="catalog-card__content-counter catalog-card__count" data-counter-counter="data-counter-counter">
                             <div class="catalog-card__count-btn" data-modal-btn="offer"> 
-                              <button class="button button-primary _small orange-100">Заказать</button>
+                              <button class="button button-primary _small orange-100 small-mobile">Перейти в корзину</button>
                             </div>
                             <div class="catalog-card__count-wrapper"> 
                               <div class="catalog-card__count-mines" data-counter-mines="data-counter-mines"> 
@@ -1214,7 +1227,7 @@
                           </div>
                           <div class="catalog-card__content-counter catalog-card__count" data-counter-counter="data-counter-counter">
                             <div class="catalog-card__count-btn" data-modal-btn="offer"> 
-                              <button class="button button-primary _small orange-100">Заказать</button>
+                              <button class="button button-primary _small orange-100 small-mobile">Перейти в корзину</button>
                             </div>
                             <div class="catalog-card__count-wrapper"> 
                               <div class="catalog-card__count-mines" data-counter-mines="data-counter-mines"> 
@@ -1254,7 +1267,7 @@
                           </div>
                           <div class="catalog-card__content-counter catalog-card__count" data-counter-counter="data-counter-counter">
                             <div class="catalog-card__count-btn" data-modal-btn="offer"> 
-                              <button class="button button-primary _small orange-100">Заказать</button>
+                              <button class="button button-primary _small orange-100 small-mobile">Перейти в корзину</button>
                             </div>
                             <div class="catalog-card__count-wrapper"> 
                               <div class="catalog-card__count-mines" data-counter-mines="data-counter-mines"> 
@@ -1294,7 +1307,7 @@
                           </div>
                           <div class="catalog-card__content-counter catalog-card__count" data-counter-counter="data-counter-counter">
                             <div class="catalog-card__count-btn" data-modal-btn="offer"> 
-                              <button class="button button-primary _small orange-100">Заказать</button>
+                              <button class="button button-primary _small orange-100 small-mobile">Перейти в корзину</button>
                             </div>
                             <div class="catalog-card__count-wrapper"> 
                               <div class="catalog-card__count-mines" data-counter-mines="data-counter-mines"> 
@@ -1334,7 +1347,7 @@
                           </div>
                           <div class="catalog-card__content-counter catalog-card__count" data-counter-counter="data-counter-counter">
                             <div class="catalog-card__count-btn" data-modal-btn="offer"> 
-                              <button class="button button-primary _small orange-100">Заказать</button>
+                              <button class="button button-primary _small orange-100 small-mobile">Перейти в корзину</button>
                             </div>
                             <div class="catalog-card__count-wrapper"> 
                               <div class="catalog-card__count-mines" data-counter-mines="data-counter-mines"> 
@@ -1374,7 +1387,7 @@
                           </div>
                           <div class="catalog-card__content-counter catalog-card__count" data-counter-counter="data-counter-counter">
                             <div class="catalog-card__count-btn" data-modal-btn="offer"> 
-                              <button class="button button-primary _small orange-100">Заказать</button>
+                              <button class="button button-primary _small orange-100 small-mobile">Перейти в корзину</button>
                             </div>
                             <div class="catalog-card__count-wrapper"> 
                               <div class="catalog-card__count-mines" data-counter-mines="data-counter-mines"> 
@@ -1414,7 +1427,7 @@
                           </div>
                           <div class="catalog-card__content-counter catalog-card__count" data-counter-counter="data-counter-counter">
                             <div class="catalog-card__count-btn" data-modal-btn="offer"> 
-                              <button class="button button-primary _small orange-100">Заказать</button>
+                              <button class="button button-primary _small orange-100 small-mobile">Перейти в корзину</button>
                             </div>
                             <div class="catalog-card__count-wrapper"> 
                               <div class="catalog-card__count-mines" data-counter-mines="data-counter-mines"> 
@@ -1454,7 +1467,7 @@
                           </div>
                           <div class="catalog-card__content-counter catalog-card__count" data-counter-counter="data-counter-counter">
                             <div class="catalog-card__count-btn" data-modal-btn="offer"> 
-                              <button class="button button-primary _small orange-100">Заказать</button>
+                              <button class="button button-primary _small orange-100 small-mobile">Перейти в корзину</button>
                             </div>
                             <div class="catalog-card__count-wrapper"> 
                               <div class="catalog-card__count-mines" data-counter-mines="data-counter-mines"> 
@@ -1494,7 +1507,7 @@
                           </div>
                           <div class="catalog-card__content-counter catalog-card__count" data-counter-counter="data-counter-counter">
                             <div class="catalog-card__count-btn" data-modal-btn="offer"> 
-                              <button class="button button-primary _small orange-100">Заказать</button>
+                              <button class="button button-primary _small orange-100 small-mobile">Перейти в корзину</button>
                             </div>
                             <div class="catalog-card__count-wrapper"> 
                               <div class="catalog-card__count-mines" data-counter-mines="data-counter-mines"> 
@@ -1534,7 +1547,7 @@
                           </div>
                           <div class="catalog-card__content-counter catalog-card__count" data-counter-counter="data-counter-counter">
                             <div class="catalog-card__count-btn" data-modal-btn="offer"> 
-                              <button class="button button-primary _small orange-100">Заказать</button>
+                              <button class="button button-primary _small orange-100 small-mobile">Перейти в корзину</button>
                             </div>
                             <div class="catalog-card__count-wrapper"> 
                               <div class="catalog-card__count-mines" data-counter-mines="data-counter-mines"> 
@@ -1574,7 +1587,7 @@
                           </div>
                           <div class="catalog-card__content-counter catalog-card__count" data-counter-counter="data-counter-counter">
                             <div class="catalog-card__count-btn" data-modal-btn="offer"> 
-                              <button class="button button-primary _small orange-100">Заказать</button>
+                              <button class="button button-primary _small orange-100 small-mobile">Перейти в корзину</button>
                             </div>
                             <div class="catalog-card__count-wrapper"> 
                               <div class="catalog-card__count-mines" data-counter-mines="data-counter-mines"> 
@@ -1614,7 +1627,7 @@
                           </div>
                           <div class="catalog-card__content-counter catalog-card__count" data-counter-counter="data-counter-counter">
                             <div class="catalog-card__count-btn" data-modal-btn="offer"> 
-                              <button class="button button-primary _small orange-100">Заказать</button>
+                              <button class="button button-primary _small orange-100 small-mobile">Перейти в корзину</button>
                             </div>
                             <div class="catalog-card__count-wrapper"> 
                               <div class="catalog-card__count-mines" data-counter-mines="data-counter-mines"> 
