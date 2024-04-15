@@ -5,7 +5,7 @@
 <html lang="ru">
   <head>
     <meta charset="utf-8">
-    <title>order-details</title>
+    <title>cart</title>
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <meta content="ie=edge" http-equiv="x-ua-compatible">
     <link href="https://vitejs.dev/logo.svg" rel="icon" type="image/x-icon">
@@ -127,7 +127,7 @@
           </div>
         </div>
       </header>
-      <main class="order-details">
+      <main class="cart-page">
         <div class="header-burger" data-modal="burger">
           <div class="header-burger__close" data-modal-close="burger">
             <svg width="40" height="40" viewbox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -323,75 +323,30 @@
             </div>
           </div>
         </div>
-        <section class="top-section order-details__hero container">
-          <div class="order-details__breadcrumbs">
+        <section class="top-section cart-page__hero container">
+          <div class="cart-page__breadcrumbs">
             <div class="breadcrumbs">
               <div class="breadcrumbs-item"> <a class="breadcrumbs-item__text" href="#">Главная</a>
                 <div class="breadcrumbs-item__slash">/</div>
               </div>
               <div class="breadcrumbs-item"> 
-                <div class="breadcrumbs-item__text">Детали заказа</div>
+                <div class="breadcrumbs-item__text">Корзина</div>
               </div>
             </div>
           </div>
-          <h1 class="order-details__title title-primary">Заказ #150423</h1>
-          <div class="order-details__rect">
-            <div class="order-details__rect-inner"> 
-              <div class="order-details__rect-col info"> 
-                <p class="order-details__subtitle">Детали заказа</p>
-                <div class="order-details__items"> 
-                  <div class="order-details__item">
-                    <p class="order-details__item-title">Дата заказа</p>
-                    <p class="order-details__item-text">08.02.24</p>
+          <h1 class="cart-page__title title-primary">Корзина</h1>
+          <div class="cart-page__row"> 
+            <div class="cart-page__content">
+              <div class="cart-page__cards">
+                <div class="offer-card" data-offer-card>
+                  <div class="offer-card__delete">
+                    <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M3 6H5H21" stroke="#454545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                      <path d="M8 6.6V4.8C8 4.32261 8.21071 3.86477 8.58579 3.52721C8.96086 3.18964 9.46957 3 10 3H14C14.5304 3 15.0391 3.18964 15.4142 3.52721C15.7893 3.86477 16 4.32261 16 4.8V6.6M19 6.6V19.2C19 19.6774 18.7893 20.1352 18.4142 20.4728C18.0391 20.8104 17.5304 21 17 21H7C6.46957 21 5.96086 20.8104 5.58579 20.4728C5.21071 20.1352 5 19.6774 5 19.2V6.6H19Z" stroke="#454545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                      <path d="M14 11V16" stroke="#454545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                      <path d="M10 11V16" stroke="#454545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
                   </div>
-                  <div class="order-details__item">
-                    <p class="order-details__item-title">Сумма заказа</p>
-                    <p class="order-details__item-text">779 921 ₽</p>
-                  </div>
-                  <div class="order-details__item">
-                    <p class="order-details__item-title">Номер для связи</p>
-                    <p class="order-details__item-text">+7 (900) - 000 - 00 - 00</p>
-                  </div>
-                  <div class="order-details__item">
-                    <p class="order-details__item-title">Почта для связи</p>
-                    <p class="order-details__item-text">example@company.com</p>
-                  </div>
-                  <div class="order-details__item">
-                    <p class="order-details__item-title">Комметарий к заказу</p>
-                    <p class="order-details__item-text">Звонить в будни дни с 12:00 до 18:00</p>
-                  </div>
-                </div>
-              </div>
-              <div class="order-details__rect-col cards"> 
-                <div class="offer-card">
-                  <div class="offer-card__inner"> 
-                    <div class="offer-card__img"> 
-                      <picture class="picture">
-                        <source class="lazyload" type="image/webp" srcset="webp/catalog-card-img1.webp 1x" alt="catalog-card-img1.png"/>
-                        <source class="lazyload" srcset="images/catalog-card-img1.jpg 1x" alt="catalog-card-img1.png"/>
-                        <source class="lazyload" srcset="images/catalog-card-img1.png 1x" alt="catalog-card-img1.png"/><img class="picture__img lazyload" data-src="images/catalog-card-img1.png" alt="catalog-card-img1.png"/>
-                      </picture>
-                    </div>
-                    <div class="offer-card__content"> 
-                      <div class="offer-card__content-title">Информационный дисплей BOE 43" SR43AA</div>
-                      <div class="offer-card__content-descr"> 
-                        <div class="offer-card__content-row"> 
-                          <p class="offer-card__content-property">Производитель</p>
-                          <p class="offer-card__content-text">BOE</p>
-                        </div>
-                        <div class="offer-card__content-row"> 
-                          <p class="offer-card__content-property">Модель</p>
-                          <p class="offer-card__content-text">SR43AA</p>
-                        </div>
-                        <div class="offer-card__content-row"> 
-                          <p class="offer-card__content-property">Артикул</p>
-                          <p class="offer-card__content-text">1489771</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="offer-card">
                   <div class="offer-card__inner"> 
                     <div class="offer-card__img"> 
                       <picture class="picture">
@@ -401,7 +356,62 @@
                       </picture>
                     </div>
                     <div class="offer-card__content"> 
-                      <div class="offer-card__content-title">Информационный дисплей BOE 43" SR43AA</div>
+                      <div class="offer-card__content-title">Информационный дисплей BOE 50" SL50AP-PBMA03</div>
+                      <div class="offer-card__content-descr"> 
+                        <div class="offer-card__content-row"> 
+                          <p class="offer-card__content-property">Производитель</p>
+                          <p class="offer-card__content-text">Hikvision</p>
+                        </div>
+                        <div class="offer-card__content-row"> 
+                          <p class="offer-card__content-property">Модель</p>
+                          <p class="offer-card__content-text">SL50AP-PBMA03</p>
+                        </div>
+                        <div class="offer-card__content-row"> 
+                          <p class="offer-card__content-property">Артикул</p>
+                          <p class="offer-card__content-text">3456990</p>
+                        </div>
+                      </div>
+                      <div class="offer-card__content-bot"> 
+                        <div class="offer-card__content-price">568 909 ₽ </div>
+                        <div class="offer-card__content-count">
+                          <div class="catalog-card__count-wrapper"> 
+                            <div class="catalog-card__count-mines" data-counter-mines> 
+                              <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5 12H19" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                              </svg>
+                            </div>
+                            <input class="catalog-card__count-number" data-counter-input type="text" value="1">
+                            <div class="catalog-card__count-plus" data-counter-plus> 
+                              <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 5V19" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M5 12H19" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                              </svg>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="offer-card" data-offer-card>
+                  <div class="offer-card__delete">
+                    <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M3 6H5H21" stroke="#454545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                      <path d="M8 6.6V4.8C8 4.32261 8.21071 3.86477 8.58579 3.52721C8.96086 3.18964 9.46957 3 10 3H14C14.5304 3 15.0391 3.18964 15.4142 3.52721C15.7893 3.86477 16 4.32261 16 4.8V6.6M19 6.6V19.2C19 19.6774 18.7893 20.1352 18.4142 20.4728C18.0391 20.8104 17.5304 21 17 21H7C6.46957 21 5.96086 20.8104 5.58579 20.4728C5.21071 20.1352 5 19.6774 5 19.2V6.6H19Z" stroke="#454545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                      <path d="M14 11V16" stroke="#454545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                      <path d="M10 11V16" stroke="#454545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                  </div>
+                  <div class="offer-card__inner"> 
+                    <div class="offer-card__img"> 
+                      <picture class="picture">
+                        <source class="lazyload" type="image/webp" srcset="webp/catalog-card-img5.webp 1x" alt="catalog-card-img5.png"/>
+                        <source class="lazyload" srcset="images/catalog-card-img5.jpg 1x" alt="catalog-card-img5.png"/>
+                        <source class="lazyload" srcset="images/catalog-card-img5.png 1x" alt="catalog-card-img5.png"/><img class="picture__img lazyload" data-src="images/catalog-card-img5.png" alt="catalog-card-img5.png"/>
+                      </picture>
+                    </div>
+                    <div class="offer-card__content"> 
+                      <div class="offer-card__content-title">Информационный дисплей BOE 50" SL50AP-PBMA03</div>
                       <div class="offer-card__content-descr"> 
                         <div class="offer-card__content-row"> 
                           <p class="offer-card__content-property">Производитель</p>
@@ -416,11 +426,69 @@
                           <p class="offer-card__content-text">1489771</p>
                         </div>
                       </div>
+                      <div class="offer-card__content-bot"> 
+                        <div class="offer-card__content-price">211 909 ₽ </div>
+                        <div class="offer-card__content-count">
+                          <div class="catalog-card__count-wrapper"> 
+                            <div class="catalog-card__count-mines" data-counter-mines> 
+                              <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5 12H19" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                              </svg>
+                            </div>
+                            <input class="catalog-card__count-number" data-counter-input type="text" value="1">
+                            <div class="catalog-card__count-plus" data-counter-plus> 
+                              <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 5V19" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M5 12H19" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                              </svg>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
+              <div class="cart-page__price">
+                <p class="cart-page__price-text title-primary">Итого:</p>
+                <p class="cart-page__price-summ title-primary">779 921 ₽</p>
+              </div>
             </div>
+            <form class="cart-page__form" data-cart-form>
+              <div class="cart-page__form-inner"> 
+                <p class="cart-page__form-title title-primary">Оформить заказ</p>
+                <p class="cart-page__form-text text-primary-s">Менеджер свяжется с&nbsp;вами в течение 15 минут для подтверждения заказа</p>
+                <div class="cart-page__form-inputs">
+                  <div class="cart-page__form-input"> 
+                    <div class="main-contact__form-block"> 
+                      <p class="main-contact__form-label">Имя</p>
+                      <input class="main-contact__form-input" placeholder="Иван" type="text" required>
+                    </div>
+                  </div>
+                  <div class="cart-page__form-input">
+                    <div class="main-contact__form-block"> 
+                      <p class="main-contact__form-label">Номер телефона</p>
+                      <input class="main-contact__form-input" placeholder="+7 (900) - 000 - 00 - 00" type="tel" data-mask-phone required>
+                    </div>
+                  </div>
+                  <div class="cart-page__form-input">
+                    <div class="main-contact__form-block"> 
+                      <p class="main-contact__form-label">Почта</p>
+                      <input class="main-contact__form-input" placeholder="example@company.com" type="email" required>
+                    </div>
+                  </div>
+                  <div class="cart-page__form-input">
+                    <div class="main-contact__form-block modal-offer__form-comment"> 
+                      <p class="main-contact__form-label">Комментарий</p>
+                      <input class="main-contact__form-input" placeholder="Доступен для звонка с 10 до 20..." type="text">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="cart-page__form-btn"> 
+                <button class="button button-primary orange-gradient">Оформить заказ</button>
+              </div>
+            </form>
           </div>
         </section>
       </main>
